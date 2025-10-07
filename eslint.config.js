@@ -11,6 +11,9 @@ import vitestPlugin from 'eslint-plugin-vitest';
 import globals from 'globals';
 
 export default [
+  {
+    ignores: ['**/node_modules/**', '**/dist/**', '.storybook/**', '**/playwright-report/**'],
+  },
   // Base configuration for all files
   {
     languageOptions: {
@@ -52,8 +55,8 @@ export default [
 
   // Main configuration for source files
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: ['node_modules/**', 'dist/**'],
+    files: ['**/*.{ts,tsx}'],
+    ignores: ['node_modules/**', 'dist/**', '.storybook', '*playwright-report'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -100,8 +103,8 @@ export default [
   // Test files configuration (Vitest)
   {
     files: [
-      '**/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
-      '**/__mocks__/**/*.{js,jsx,ts,tsx}',
+      '**/src/**/*.{spec,test}.{ts,tsx}',
+      '**/__mocks__/**/*.{ts,tsx}',
       './src/setupTests.ts',
       './src/__tests__/utils.ts',
     ],
