@@ -1,0 +1,384 @@
+# AI Agent 기반 TDD 워크플로우 자동화 설정
+# 프로젝트: 반복 일정 기능 개발 (front_7th_chapter1-2)
+# 작성일: 2025-10-29
+
+version: "1.0.0"
+
+metadata:
+  project: "반복 일정 기능 TDD"
+  description: "AI Agent 기반 완전 자동화 TDD 워크플로우"
+  repository: "front_7th_chapter1-2"
+  created: "2025-10-29"
+
+environment:
+  language: "TypeScript"
+  runtime: "Node.js 18+"
+  test_framework: "Vitest"
+  test_version: "^3.2.4"
+  package_manager: "pnpm"
+  working_directory: "."
+  test_pattern: "src/**/*.spec.ts"
+
+agents:
+  orchestrator:
+    id: "orchestrator-001"
+    name: "OrchestratorAgent"
+    role: "workflow_coordinator"
+    provider: "openai"
+    model: "gpt-4o"
+    config:
+      temperature: 0.3
+      max_tokens: 4000
+      timeout_seconds: 60
+    capabilities:
+      - workflow_management
+      - agent_coordination
+      - state_tracking
+      - error_recovery
+    description: "전체 TDD 워크플로우 제어 및 Agent 간 조율"
+    persona_reference: "docs/test-guides/workflow-agents.md#1-orchestrator-agent"
+    inputs:
+      - path: "docs/spec.md"
+        required: true
+        format: "markdown"
+      - path: "state/workflow-status.json"
+        required: true
+        format: "json"
+    outputs:
+      - path: "state/workflow-status.json"
+        format: "json"
+      - path: "logs/orchestrator.log"
+        format: "text"
+
+  spec_agent:
+    id: "spec-gen-001"
+    name: "SpecAgent"
+    role: "specification_writer"
+    provider: "anthropic"
+    model: "claude-3-5-sonnet-20241022"
+    config:
+      temperature: 0.2
+      max_tokens: 4000
+      timeout_seconds: 90
+    capabilities:
+      - requirement_analysis
+      - specification_writing
+      - edge_case_identification
+      - full_stack_specification
+    description: "전체 스택(UI/훅/API/유틸) 명세 작성"
+    persona_reference: "docs/test-guides/workflow-agents.md#2-specagent"
+    inputs:
+      - path: "docs/requirements.md"
+        required: true
+        format: "markdown"
+        description: "사용자 요구사항 (과제 명세)"
+      - path: "docs/TEST_GUIDE.md"
+        required: true
+        format: "markdown"
+      - path: "src/types.ts"
+        required: false
+        format: "typescript"
+        description: "기존 타입 정의"
+    outputs:
+      - path: "docs/spec.md"
+        format: "markdown"
+        validation:
+          required_sections:
+            - "UI 명세"
+            - "훅 명세"
+            - "API 명세"
+            - "유틸 명세"
+            - "엣지 케이스"
+      - path: "state/test-scope.json"
+        format: "json"
+
+  test_agent:
+    id: "test-writer-001"
+    name: "TestAgent"
+    role: "test_engineer"
+    provider: "openai"
+    model: "gpt-4o-mini"
+    config:
+      temperature: 0.4
+      max_tokens: 3500
+      timeout_seconds: 45
+    capabilities:
+      - unit_test_generation
+      - hook_test_generation
+      - integration_test_generation
+      - api_test_generation
+    description: "전체 스택 테스트 생성 (유닛/훅/통합/API)"
+    persona_reference: "docs/test-guides/workflow-agents.md#3-testagent"
+    test_framework:
+      name: "Vitest"
+      version: "^3.2.4"
+      config_file: "vitest.config.ts"
+    inputs:
+      - path: "docs/spec.md"
+        required: true
+        format: "markdown"
+      - path: "docs/test-guides/patterns.md"
+        required: true
+        format: "markdown"
+      - path: "docs/test-guides/ai-agent.md"
+        required: true
+        format: "markdown"
+    outputs:
+      - path: "src/__tests__/unit/*.spec.ts"
+        format: "typescript"
+        description: "유틸 함수 유닛 테스트"
+      - path: "src/__tests__/hooks/*.spec.ts"
+        format: "typescript"
+        description: "React 훅 테스트"
+      - path: "src/__tests__/integration/*.spec.tsx"
+        format: "typescript"
+        description: "통합 테스트 (UI + 훅 + API)"
+    test_categories:
+      happy_path:
+        min_tests: 1
+        priority: "high"
+      edge_cases:
+        min_tests: 2
+        priority: "high"
+        examples: ["31일 매월", "윤년 29일"]
+      boundary_cases:
+        min_tests: 2
+        priority: "medium"
+    naming_convention: "should_{expected_behavior}_when_{condition}"
+    quality_gates:
+      min_tests_per_feature: 4
+      require_aaa_pattern: true
+      max_test_length_lines: 30
+
+  code_agent:
+    id: "code-impl-001"
+    name: "CodeAgent"
+    role: "software_engineer"
+    provider: "openai"
+    model: "gpt-4o"
+    config:
+      temperature: 0.3
+      max_tokens: 6000
+      timeout_seconds: 120
+    capabilities:
+      - ui_implementation
+      - hook_implementation
+      - api_implementation
+      - util_implementation
+    description: "전체 스택 최소 구현 (UI + 훅 + API + 유틸)"
+    persona_reference: "docs/test-guides/workflow-agents.md#4-codeagent"
+    inputs:
+      - path: "src/__tests__/**/*.spec.ts"
+        required: true
+        format: "typescript"
+        type: "glob"
+      - path: "reports/test-results.json"
+        required: true
+        format: "json"
+      - path: "src/types.ts"
+        required: true
+        format: "typescript"
+    outputs:
+      ui_components:
+        - path: "src/App.tsx"
+          description: "반복 설정 UI 추가"
+      hooks:
+        - path: "src/hooks/useEventForm.ts"
+          description: "반복 설정 상태 관리"
+        - path: "src/hooks/useEventOperations.ts"
+          description: "반복 일정 CRUD"
+      api:
+        - path: "server.js"
+          description: "반복 일정 API 엔드포인트"
+      utils:
+        - path: "src/utils/repeatUtils.ts"
+          description: "반복 일정 생성 로직"
+    principles:
+      tdd:
+        only_implement_for_tests: true
+        avoid_premature_optimization: true
+        hardcoding_allowed_initially: true
+      clean_code:
+        meaningful_names: true
+        small_functions: true
+        no_magic_numbers: true
+    constraints:
+      max_function_length_lines: 50
+      max_cyclomatic_complexity: 10
+    quality_gates:
+      all_tests_must_pass: true
+      no_skipped_tests: true
+      no_console_logs: true
+
+  refactor_agent:
+    id: "refactor-rev-001"
+    name: "RefactorReviewAgent"
+    role: "quality_assurance"
+    provider: "anthropic"
+    model: "claude-3-5-sonnet-20241022"
+    config:
+      temperature: 0.2
+      max_tokens: 4000
+      timeout_seconds: 90
+    capabilities:
+      - code_quality_analysis
+      - metric_evaluation
+      - refactoring_suggestions
+      - full_stack_review
+    description: "전체 스택 품질 검증 및 리팩토링"
+    persona_reference: "docs/test-guides/workflow-agents.md#5-refactorreviewagent"
+    inputs:
+      - path: "src/**/*.ts"
+        required: true
+        format: "typescript"
+        type: "glob"
+      - path: "docs/test-guides/test-metrics.md"
+        required: true
+        format: "markdown"
+      - path: "coverage/coverage-summary.json"
+        required: true
+        format: "json"
+    outputs:
+      - path: "docs/test-guides/execution-log.md"
+        format: "markdown"
+        template: "docs/test-guides/execution-log.md"
+      - path: "reports/refactor-suggestions.json"
+        format: "json"
+    evaluation_criteria:
+      code_coverage:
+        statement_min: 80
+        branch_min: 70
+        function_min: 85
+      mutation_score:
+        min_score: 70
+      performance:
+        test_execution_time_max_ms: 200
+    review_checklist:
+      - "AAA 패턴 준수"
+      - "Mock 사용 없음"
+      - "테스트 독립성"
+      - "명확한 네이밍"
+      - "매직 넘버 없음"
+      - "SOLID 원칙"
+
+  git_agent:
+    id: "git-agent-001"
+    name: "GitAgent"
+    role: "version_manager"
+    provider: "openai"
+    model: "gpt-4o"
+    config:
+      temperature: 0.0
+      max_tokens: 2000
+      timeout_seconds: 30
+    capabilities:
+      - commit_creation
+      - conventional_commits
+      - changelog_updates
+    description: "버전 관리 및 커밋 자동화"
+    persona_reference: "docs/test-guides/workflow-agents.md#6-gitagent"
+    inputs:
+      - path: "docs/test-guides/execution-log.md"
+        required: true
+        format: "markdown"
+      - path: "reports/test-results.json"
+        required: true
+        format: "json"
+    outputs:
+      - path: "logs/git-log.txt"
+        format: "text"
+    commit_conventions:
+      format: "conventional_commits"
+      types:
+        red: "test"
+        green: "feat"
+        refactor: "refactor"
+      message_format: "{type}: {phase} - {description}\n\n{details}\n\nCoverage: {coverage}% | Mutation: {mutation}%"
+    branching_strategy:
+      main_branch: "main"
+      feature_prefix: "feature/"
+
+workflow:
+  phases:
+    RED:
+      agents: ["spec_agent", "test_agent"]
+      entry_condition: "feature_request_received"
+      exit_condition: "tests_failing"
+      timeout_minutes: 30
+      steps:
+        - name: "spec_generation"
+          agent: "spec_agent"
+          required: true
+        - name: "test_generation"
+          agent: "test_agent"
+          required: true
+        - name: "verify_tests_fail"
+          command: "pnpm test"
+          expected_result: "failure"
+
+    GREEN:
+      agents: ["code_agent"]
+      entry_condition: "tests_failing"
+      exit_condition: "all_tests_passing"
+      timeout_minutes: 60
+      steps:
+        - name: "implementation"
+          agent: "code_agent"
+          required: true
+        - name: "verify_tests_pass"
+          command: "pnpm test"
+          expected_result: "success"
+
+    REFACTOR:
+      agents: ["refactor_agent"]
+      entry_condition: "all_tests_passing"
+      exit_condition: "quality_gates_met"
+      timeout_minutes: 30
+      steps:
+        - name: "quality_review"
+          agent: "refactor_agent"
+          required: true
+        - name: "measure_metrics"
+          commands:
+            - "pnpm test:coverage"
+            - "pnpm test:mutation"
+        - name: "apply_refactoring"
+          agent: "code_agent"
+          required: false
+
+    COMMIT:
+      agents: ["git_agent"]
+      entry_condition: "quality_gates_met"
+      exit_condition: "changes_committed"
+      timeout_minutes: 10
+      steps:
+        - name: "create_commit"
+          agent: "git_agent"
+          required: true
+
+  transitions:
+    auto_advance: true
+    manual_gates: ["COMMIT"]
+    rollback_on_failure: true
+
+error_handling:
+  retry_strategy: "exponential_backoff"
+  max_retries: 3
+  alert_on_failure: true
+
+logging:
+  level: "info"
+  files:
+    execution: "logs/execution-log.md"
+    orchestrator: "logs/orchestrator.log"
+    agents: "logs/agents/"
+  retention_days: 30
+
+performance:
+  parallel_execution:
+    enabled: false
+    max_concurrent_agents: 1
+  caching:
+    enabled: true
+    cache_spec_analyses: true
+

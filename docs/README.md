@@ -4,17 +4,18 @@
 
 ### 상황별 추천 문서
 
-| 상황                     | 추천 문서                                                          | 예상 시간 |
-| ------------------------ | ------------------------------------------------------------------ | --------- |
-| 🚀 **지금 당장 시작**    | [TEST_GUIDE_QUICK.md](./TEST_GUIDE_QUICK.md)                       | 5분       |
-| 📖 **체계적 학습**       | [TEST_GUIDE.md](./TEST_GUIDE.md)                                   | 20분      |
-| 🤖 **AI Agent 사용**     | [test-guides/ai-agent.md](./test-guides/ai-agent.md)               | 10분      |
-| 💡 **패턴 학습**         | [test-guides/patterns.md](./test-guides/patterns.md)               | 15분      |
-| 📝 **예시 필요**         | [test-guides/examples.md](./test-guides/examples.md)               | 참조용    |
-| ⚠️ **실수 방지**         | [test-guides/antipatterns.md](./test-guides/antipatterns.md)       | 10분      |
-| 📊 **품질 측정**         | [test-guides/test-metrics.md](./test-guides/test-metrics.md)       | 15분      |
-| 📋 **실행 로그**         | [test-guides/execution-log.md](./test-guides/execution-log.md)     | 템플릿    |
-| ⚙️ **워크플로우 자동화** | [test-guides/workflow-agents.md](./test-guides/workflow-agents.md) | 20분      |
+| 상황                     | 추천 문서                                                            | 예상 시간 |
+| ------------------------ | -------------------------------------------------------------------- | --------- |
+| 🚀 **지금 당장 시작**    | [TEST_GUIDE_QUICK.md](./TEST_GUIDE_QUICK.md)                         | 5분       |
+| 📖 **체계적 학습**       | [TEST_GUIDE.md](./TEST_GUIDE.md)                                     | 20분      |
+| 🤖 **AI Agent 사용**     | [test-guides/ai-agent.md](./test-guides/ai-agent.md)                 | 10분      |
+| 💡 **패턴 학습**         | [test-guides/patterns.md](./test-guides/patterns.md)                 | 15분      |
+| 📝 **예시 필요**         | [test-guides/examples.md](./test-guides/examples.md)                 | 참조용    |
+| ⚠️ **실수 방지**         | [test-guides/antipatterns.md](./test-guides/antipatterns.md)         | 10분      |
+| 📊 **품질 측정**         | [test-guides/test-metrics.md](./test-guides/test-metrics.md)         | 15분      |
+| 📋 **실행 로그**         | [test-guides/execution-log.md](./test-guides/execution-log.md)       | 템플릿    |
+| ⚙️ **워크플로우 자동화** | [test-guides/workflow-agents.md](./test-guides/workflow-agents.md)   | 20분      |
+| 🤖 **Agent 프롬프트**    | [test-guides/prompt-templates.md](./test-guides/prompt-templates.md) | 참조용    |
 
 ---
 
@@ -33,7 +34,8 @@ docs/
     ├── ai-agent.md             ← AI Agent 전용 지침
     ├── test-metrics.md         ← 테스트 품질 평가 기준
     ├── execution-log.md        ← TDD 실행 로그 템플릿
-    └── workflow-agents.md      ← AI Agent 기반 TDD 워크플로우
+    ├── workflow-agents.md      ← AI Agent 기반 TDD 워크플로우
+    └── prompt-templates.md     ← Agent 프롬프트 템플릿 (복사용)
 ```
 
 ---
@@ -236,19 +238,24 @@ cat docs/TEST_GUIDE_QUICK.md
 4단계: 더 깊이 알고 싶으면 TEST_GUIDE.md
 ```
 
-### 시나리오 2: AI Agent 설정
+### 시나리오 2: AI Agent로 TDD 진행
 
 ```
-1단계: ai-agent.md 전체 읽기
-       → AI Agent 동작 원칙 파악
+1단계: workflow-agents.md 읽기
+       → Agent 역할 및 페르소나 파악
 
-2단계: TEST_GUIDE_QUICK.md 참조 설정
+2단계: prompt-templates.md에서 프롬프트 복사
+       → Cursor Composer에 붙여넣기
+       → RED → GREEN → REFACTOR 진행
+
+3단계: ai-agent.md + TEST_GUIDE_QUICK.md 참조
+       → AI Agent 동작 원칙 파악
        → 빠른 룰 기반 판단
 
-3단계: antipatterns.md로 회피 패턴 학습
+4단계: antipatterns.md로 회피 패턴 학습
        → 자동 감지 및 회피
 
-4단계: examples.md를 템플릿으로 활용
+5단계: examples.md를 템플릿으로 활용
        → 일관된 코드 생성
 ```
 

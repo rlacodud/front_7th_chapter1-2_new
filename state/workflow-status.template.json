@@ -1,0 +1,231 @@
+{
+  "$schema": "../config/workflow-status-schema.json",
+  "workflow_id": "wf-initial",
+  "workflow_version": "1.0.0",
+  "created_at": null,
+  "updated_at": null,
+  "feature": {
+    "id": "FEAT-001",
+    "name": "반복 일정 기능",
+    "description": "반복 유형 선택, 아이콘 표시, 종료 날짜, 단일/전체 수정 및 삭제",
+    "type": "feature",
+    "priority": "high",
+    "requirements_path": "docs/requirements.md"
+  },
+  "current_phase": {
+    "name": null,
+    "status": "pending",
+    "started_at": null,
+    "progress_percent": 0,
+    "substep": null
+  },
+  "phases": {
+    "RED": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "duration_seconds": null,
+      "steps": {
+        "spec_generation": {
+          "status": "pending",
+          "agent": "spec_agent",
+          "started_at": null,
+          "completed_at": null,
+          "duration_seconds": null,
+          "attempts": 0,
+          "outputs": []
+        },
+        "test_generation": {
+          "status": "pending",
+          "agent": "test_agent",
+          "started_at": null,
+          "completed_at": null,
+          "duration_seconds": null,
+          "attempts": 0,
+          "outputs": []
+        }
+      },
+      "exit_criteria": {
+        "tests_created": false,
+        "tests_failing": false,
+        "min_test_count_met": false
+      }
+    },
+    "GREEN": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "duration_seconds": null,
+      "steps": {
+        "implementation": {
+          "status": "pending",
+          "agent": "code_agent",
+          "started_at": null,
+          "completed_at": null,
+          "duration_seconds": null,
+          "attempts": 0,
+          "outputs": []
+        }
+      },
+      "exit_criteria": {
+        "all_tests_passing": false,
+        "no_skipped_tests": false,
+        "code_implemented": false
+      }
+    },
+    "REFACTOR": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "duration_seconds": null,
+      "steps": {
+        "quality_review": {
+          "status": "pending",
+          "agent": "refactor_agent",
+          "started_at": null,
+          "completed_at": null,
+          "duration_seconds": null,
+          "attempts": 0,
+          "outputs": []
+        }
+      },
+      "exit_criteria": {
+        "quality_gates_met": false,
+        "metrics_acceptable": false
+      }
+    },
+    "COMMIT": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "duration_seconds": null,
+      "steps": {
+        "version_control": {
+          "status": "pending",
+          "agent": "git_agent",
+          "started_at": null,
+          "completed_at": null,
+          "duration_seconds": null,
+          "attempts": 0,
+          "outputs": []
+        }
+      },
+      "exit_criteria": {
+        "changes_committed": false
+      }
+    }
+  },
+  "agents": {
+    "orchestrator": {
+      "status": "idle",
+      "agent_id": "orchestrator-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    },
+    "spec_agent": {
+      "status": "idle",
+      "agent_id": "spec-gen-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    },
+    "test_agent": {
+      "status": "idle",
+      "agent_id": "test-writer-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    },
+    "code_agent": {
+      "status": "idle",
+      "agent_id": "code-impl-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    },
+    "refactor_agent": {
+      "status": "idle",
+      "agent_id": "refactor-rev-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    },
+    "git_agent": {
+      "status": "idle",
+      "agent_id": "git-agent-001",
+      "last_activity": null,
+      "tasks_completed": 0,
+      "tasks_pending": 0,
+      "health": "healthy"
+    }
+  },
+  "test_status": {
+    "total_tests": 0,
+    "passing": 0,
+    "failing": 0,
+    "skipped": 0,
+    "last_run": null,
+    "test_files": []
+  },
+  "quality_metrics": {
+    "coverage": {
+      "statements": 0,
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "last_measured": null
+    },
+    "mutation_score": {
+      "score": 0,
+      "last_measured": null
+    }
+  },
+  "git": {
+    "repository": "front_7th_chapter1-2",
+    "branch": "main",
+    "commits_count": 0,
+    "files_changed": 0
+  },
+  "errors": [],
+  "warnings": [],
+  "notifications": [],
+  "logs": {
+    "execution_log": "logs/execution-log.md",
+    "orchestrator_log": "logs/orchestrator.log",
+    "agent_logs": "logs/agents/",
+    "last_updated": null
+  },
+  "resources": {
+    "token_usage": {
+      "total": 0,
+      "by_agent": {
+        "orchestrator": 0,
+        "spec_agent": 0,
+        "test_agent": 0,
+        "code_agent": 0,
+        "refactor_agent": 0,
+        "git_agent": 0
+      }
+    },
+    "execution_time": {
+      "total_seconds": 0,
+      "by_phase": {
+        "RED": 0,
+        "GREEN": 0,
+        "REFACTOR": 0,
+        "COMMIT": 0
+      }
+    }
+  },
+  "next_actions": [],
+  "metadata": {
+    "schema_version": "1.0.0",
+    "timezone": "Asia/Seoul"
+  }
+}
