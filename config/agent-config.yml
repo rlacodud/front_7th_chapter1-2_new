@@ -264,7 +264,7 @@ agents:
   git_agent:
     id: "git-agent-001"
     name: "GitAgent"
-    role: "version_manager"
+    role: "commit_message_generator"
     provider: "openai"
     model: "gpt-4o"
     config:
@@ -272,10 +272,10 @@ agents:
       max_tokens: 2000
       timeout_seconds: 30
     capabilities:
-      - commit_creation
+      - commit_message_generation  # 메시지 생성만
       - conventional_commits
       - changelog_updates
-    description: "버전 관리 및 커밋 자동화"
+    description: "커밋 메시지 생성 (실제 커밋/푸시는 대화형 승인)"
     persona_reference: "docs/test-guides/workflow-agents.md#6-gitagent"
     inputs:
       - path: "docs/test-guides/execution-log.md"
@@ -285,6 +285,9 @@ agents:
         required: true
         format: "json"
     outputs:
+      - path: "state/commit-messages.json"
+        format: "json"
+        description: "생성된 커밋 메시지 (RED, GREEN, REFACTOR)"
       - path: "logs/git-log.txt"
         format: "text"
     commit_conventions:
@@ -297,6 +300,9 @@ agents:
     branching_strategy:
       main_branch: "main"
       feature_prefix: "feature/"
+    approval_required:
+      commit: true  # 커밋 실행 전 승인 필요
+      push: true    # 푸시 실행 전 승인 필요
 
 workflow:
   phases:

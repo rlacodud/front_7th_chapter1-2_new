@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "generated_at": "{{timestamp}}",
+  "feature_id": "{{feature_id}}",
+  "feature_name": "{{feature_name}}",
+  
+  "commits": [
+    {
+      "stage": "RED",
+      "type": "test",
+      "message": "test: RED - {{description}}\n\n{{details}}\n\nTests: {{test_count}} FAIL ✅",
+      "files": [],
+      "metadata": {
+        "test_count": 0,
+        "test_files": [],
+        "generated_by": "test_agent"
+      }
+    },
+    {
+      "stage": "GREEN",
+      "type": "feat",
+      "message": "feat: GREEN - {{description}}\n\n{{details}}\n\nTests: {{test_count}} PASS ✅",
+      "files": [],
+      "metadata": {
+        "implementation_files": [],
+        "test_count": 0,
+        "generated_by": "code_agent"
+      }
+    },
+    {
+      "stage": "REFACTOR",
+      "type": "refactor",
+      "message": "refactor: REFACTOR - {{description}}\n\n{{details}}\n\nCoverage: {{coverage}}% | Mutation: {{mutation}}%",
+      "files": [],
+      "metadata": {
+        "coverage": 0,
+        "mutation_score": 0,
+        "improvements": [],
+        "generated_by": "refactor_agent"
+      }
+    }
+  ],
+  
+  "git_config": {
+    "remote": "origin",
+    "branch": "main",
+    "commit_strategy": "per_stage",
+    "push_strategy": "after_all"
+  },
+  
+  "approval_history": []
+}
+
