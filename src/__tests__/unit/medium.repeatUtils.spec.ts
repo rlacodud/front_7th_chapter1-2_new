@@ -1,5 +1,5 @@
-import { generateRecurringEvents } from '../../utils/repeatUtils';
 import type { EventForm } from '../../types';
+import { generateRecurringEvents } from '../../utils/repeatUtils';
 
 // RED 단계: 반복 일정 생성 유틸 테스트 (타입 안전 버전)
 describe('generateRecurringEvents (반복 일정 생성 유틸)', () => {
@@ -126,5 +126,26 @@ describe('generateRecurringEvents (반복 일정 생성 유틸)', () => {
 
     const events = generateRecurringEvents(baseEvent);
     expect(events).toHaveLength(0);
+  });
+
+  it('종료일이 설정되지 않은 반복 일정은 2025-12-31까지만 전개된다', () => {
+    // Arrange
+    const baseEvent: EventForm = {
+      title: 'NoEndCap',
+      date: '2025-12-30',
+      startTime: '09:00',
+      endTime: '10:00',
+      description: '',
+      location: '',
+      category: '업무',
+      repeat: { type: 'daily', interval: 1 },
+      notificationTime: 10,
+    } as unknown as EventForm; // endDate 미설정 케이스
+
+    // Act
+    const events = generateRecurringEvents(baseEvent);
+
+    // Assert: 2025-12-30, 2025-12-31까지만 포함되고 2026-01-01은 포함되지 않는다
+    expect(events.map((e) => e.date)).toEqual(['2025-12-30', '2025-12-31']);
   });
 });

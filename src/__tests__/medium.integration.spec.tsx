@@ -247,6 +247,70 @@ describe('반복 일정 표시', () => {
   });
 });
 
+describe('반복 종료', () => {
+  it('특정 종료일을 지정하면 종료일 이전 발생분만 달력에 표시된다', async () => {
+    server.use(
+      http.get('/api/events', () => {
+        return HttpResponse.json({
+          events: [
+            {
+              id: 'e1',
+              title: '주간 반복',
+              date: '2025-10-01',
+              startTime: '09:00',
+              endTime: '10:00',
+              description: 'weekly',
+              location: '회의실',
+              category: '업무',
+              repeat: { type: 'weekly', interval: 1, endDate: '2025-10-15' },
+              notificationTime: 10,
+            },
+          ],
+        });
+      })
+    );
+
+    setup(<App />);
+
+    // 10월 1일, 8일, 15일까지 표시되고 이후(22일)는 표시되지 않아야 함
+    const monthView = await screen.findByTestId('month-view');
+    // 종료일(10/15) 이전 주차 발생(1, 8, 15)이 모두 존재하는지 확인 (총 3개)
+    const items = await within(monthView).findAllByText('주간 반복');
+    expect(items.length).toBe(3);
+  });
+
+  it('종료일이 없으면 2025-12-31까지만 전개되어 다음 해 발생분은 달력에 표시되지 않는다', async () => {
+    server.use(
+      http.get('/api/events', () => {
+        return HttpResponse.json({
+          events: [
+            {
+              id: 'd1',
+              title: '일일 반복(무종료)',
+              date: '2025-12-30',
+              startTime: '09:00',
+              endTime: '10:00',
+              description: 'daily',
+              location: '회의실',
+              category: '업무',
+              repeat: { type: 'daily', interval: 1 },
+              notificationTime: 10,
+            },
+          ],
+        });
+      })
+    );
+
+    vi.setSystemTime(new Date('2025-12-01'));
+    setup(<App />);
+
+    const monthView = await screen.findByTestId('month-view');
+    // 12월 내 발생분만 있어야 하며, 2026-01-01 발생분은 표시되지 않아야 함
+    const items = await within(monthView).findAllByText('일일 반복(무종료)');
+    expect(items.length).toBe(2); // 12/30, 12/31
+  });
+});
+
 describe('검색 기능', () => {
   beforeEach(() => {
     server.use(
