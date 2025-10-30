@@ -13,8 +13,12 @@ export const useEventForm = (initialEvent?: Event) => {
   const [description, setDescription] = useState(initialEvent?.description || '');
   const [location, setLocation] = useState(initialEvent?.location || '');
   const [category, setCategory] = useState(initialEvent?.category || '업무');
-  const [isRepeating, setIsRepeating] = useState(initialEvent?.repeat.type !== 'none');
-  const [repeatType, setRepeatType] = useState<RepeatType>(initialEvent?.repeat.type || 'none');
+  const [isRepeating, setIsRepeating] = useState(
+    initialEvent ? initialEvent.repeat.type !== 'none' : false
+  );
+  const [repeatType, setRepeatTypeState] = useState<RepeatType>(
+    initialEvent?.repeat.type || 'none'
+  );
   const [repeatInterval, setRepeatInterval] = useState(initialEvent?.repeat.interval || 1);
   const [repeatEndDate, setRepeatEndDate] = useState(initialEvent?.repeat.endDate || '');
   const [notificationTime, setNotificationTime] = useState(initialEvent?.notificationTime || 10);
@@ -47,7 +51,7 @@ export const useEventForm = (initialEvent?: Event) => {
     setLocation('');
     setCategory('업무');
     setIsRepeating(false);
-    setRepeatType('none');
+    setRepeatTypeState('none');
     setRepeatInterval(1);
     setRepeatEndDate('');
     setNotificationTime(10);
@@ -63,7 +67,7 @@ export const useEventForm = (initialEvent?: Event) => {
     setLocation(event.location);
     setCategory(event.category);
     setIsRepeating(event.repeat.type !== 'none');
-    setRepeatType(event.repeat.type);
+    setRepeatTypeState(event.repeat.type);
     setRepeatInterval(event.repeat.interval);
     setRepeatEndDate(event.repeat.endDate || '');
     setNotificationTime(event.notificationTime);
@@ -87,7 +91,11 @@ export const useEventForm = (initialEvent?: Event) => {
     isRepeating,
     setIsRepeating,
     repeatType,
-    setRepeatType,
+    setRepeatType: (next: RepeatType | string) => {
+      const isValid = (v: unknown): v is RepeatType =>
+        v === 'none' || v === 'daily' || v === 'weekly' || v === 'monthly' || v === 'yearly';
+      setRepeatTypeState(isValid(next) ? next : 'none');
+    },
     repeatInterval,
     setRepeatInterval,
     repeatEndDate,
