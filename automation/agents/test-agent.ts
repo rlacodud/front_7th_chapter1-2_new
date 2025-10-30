@@ -238,7 +238,10 @@ ${testGuide.substring(0, 2000)}
     while ((match = filePattern.exec(aiResponse)) !== null) {
       const [, filePath, content] = match;
       const cleanPath = filePath.trim();
-      const cleanContent = content.trim();
+      let cleanContent = content.trim();
+
+      // markdown 코드 펜스 제거
+      cleanContent = this.removeMarkdownCodeFences(cleanContent);
 
       files[cleanPath] = cleanContent;
       this.logger.debug(`Extracted test file: ${cleanPath}`);
@@ -247,10 +250,25 @@ ${testGuide.substring(0, 2000)}
     // 파일이 추출되지 않으면 전체를 단일 파일로 간주
     if (Object.keys(files).length === 0) {
       this.logWarning('No file markers found, treating as single file');
-      files['src/__tests__/unit/generated.spec.ts'] = aiResponse;
+      let cleanResponse = this.removeMarkdownCodeFences(aiResponse);
+      files['src/__tests__/unit/generated.spec.ts'] = cleanResponse;
     }
 
     return files;
+  }
+
+  /**
+   * markdown 코드 펜스 제거
+   */
+  private removeMarkdownCodeFences(content: string): string {
+    // 시작 코드 펜스 제거: ```typescript, ```ts, ```javascript, ```jsx, ```tsx
+    content = content.replace(/^```(?:typescript|ts|javascript|jsx|tsx|js)\s*\n/gm, '');
+
+    // 종료 코드 펜스 제거: ```
+    content = content.replace(/\n```\s*$/gm, '');
+    content = content.replace(/^```\s*$/gm, '');
+
+    return content.trim();
   }
 
   /**

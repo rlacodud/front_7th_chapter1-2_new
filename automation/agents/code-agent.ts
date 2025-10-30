@@ -43,7 +43,16 @@ export class CodeAgent extends BaseAgent {
     const outputs = this.extractImplementationFiles(implementationCode);
     this.writeOutputs(outputs);
 
-    // 6. 테스트 재실행 (통과 확인)
+    // 6. Lint 검사 실행
+    const lintResult = await this.runLint();
+    if (!lintResult.success) {
+      this.logWarning('Lint 오류 발견됨:');
+      this.logger.warn(lintResult.stderr.substring(0, 500));
+    } else {
+      this.logger.success('Lint 검사 통과');
+    }
+
+    // 7. 테스트 재실행 (통과 확인)
     const passingTests = await this.runTests();
 
     if (!passingTests.success) {
@@ -52,7 +61,7 @@ export class CodeAgent extends BaseAgent {
       this.logger.success('모든 테스트 통과 (GREEN 단계 성공)');
     }
 
-    // 7. 테스트 상태 업데이트
+    // 8. 테스트 상태 업데이트
     this.updateTestStatus(passingTests.stdout);
 
     return {
@@ -60,6 +69,7 @@ export class CodeAgent extends BaseAgent {
       outputs,
       metrics: {
         implementation_files: Object.keys(outputs).length,
+        lint_passed: lintResult.success,
       },
     };
   }
@@ -117,26 +127,7 @@ export const useEventForm = () => {
 };
 \`\`\`
 
-### 3. API 구현 (server.js)
-- Express 라우트 추가/수정
-- 파일 기반 DB 조작
-- 에러 처리
-
-**예시**:
-\`\`\`javascript
-// POST /api/events - 반복 일정 생성
-app.post('/api/events', (req, res) => {
-  const { repeat } = req.body;
-  
-  if (repeat.type !== 'none') {
-    // 반복 일정 생성 로직
-  }
-  
-  res.json({ success: true });
-});
-\`\`\`
-
-### 4. 유틸 구현 (src/utils/)
+### 3. 유틸 구현 (src/utils/)
 - 순수 함수
 - 비즈니스 로직
 - 헬퍼 함수
@@ -166,9 +157,6 @@ export function generateRecurringEvents(
 
 === FILE: src/hooks/useEventForm.ts ===
 [구현 코드]
-
-=== FILE: server.js ===
-[기존 코드 + 추가 부분]
 
 === FILE: src/App.tsx ===
 [기존 코드 + 추가 부분]
@@ -211,14 +199,14 @@ ${testFilesList}
 **구현 범위**:
 1. UI (src/App.tsx) - 반복 유형 Select, 아이콘 표시, Dialog
 2. 훅 (src/hooks/) - useEventForm, useEventOperations
-3. API (server.js) - POST, PUT, DELETE 엔드포인트
-4. 유틸 (src/utils/) - repeatUtils.ts
+3. 유틸 (src/utils/) - repeatUtils.ts
 
 **중요**:
 - 테스트를 통과시키는 최소 코드만
 - 하드코딩도 초기에는 OK
 - 엣지 케이스 처리 (31일 매월, 윤년 29일)
-- 기존 코드 수정 시 주석으로 표시`;
+- 기존 코드 수정 시 주석으로 표시
+- **server.js는 수정하지 말 것** (테스트는 MSW로 모킹됨)`;
   }
 
   /**
@@ -252,7 +240,17 @@ ${testFilesList}
     while ((match = filePattern.exec(aiResponse)) !== null) {
       const [, filePath, content] = match;
       const cleanPath = filePath.trim();
-      const cleanContent = content.trim();
+
+      // server.js는 제외 (프론트엔드 TDD는 MSW 사용)
+      if (cleanPath.includes('server.js')) {
+        this.logWarning(`Skipping server.js (API는 MSW로 모킹됨)`);
+        continue;
+      }
+
+      let cleanContent = content.trim();
+
+      // markdown 코드 펜스 제거
+      cleanContent = this.removeMarkdownCodeFences(cleanContent);
 
       files[cleanPath] = cleanContent;
       this.logger.debug(`Extracted implementation file: ${cleanPath}`);
@@ -263,6 +261,20 @@ ${testFilesList}
     }
 
     return files;
+  }
+
+  /**
+   * markdown 코드 펜스 제거
+   */
+  private removeMarkdownCodeFences(content: string): string {
+    // 시작 코드 펜스 제거: ```typescript, ```ts, ```javascript, ```jsx, ```tsx
+    content = content.replace(/^```(?:typescript|ts|javascript|jsx|tsx|js)\s*\n/gm, '');
+
+    // 종료 코드 펜스 제거: ```
+    content = content.replace(/\n```\s*$/gm, '');
+    content = content.replace(/^```\s*$/gm, '');
+
+    return content.trim();
   }
 
   /**
@@ -277,6 +289,21 @@ ${testFilesList}
     });
 
     return result;
+  }
+
+  /**
+   * Lint 검사 실행
+   */
+  private async runLint() {
+    this.logger.step('Lint 검사 중...');
+
+    const result = await this.commandRunner.run('pnpm', ['lint']);
+
+    return {
+      success: result.exitCode === 0,
+      stdout: result.stdout,
+      stderr: result.stderr,
+    };
   }
 
   /**
