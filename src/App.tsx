@@ -104,13 +104,10 @@ function App() {
   const { view, setView, currentDate, holidays, navigate } = useCalendarView();
 
   const getViewRange = () => {
-    const rangeStart = new Date(currentDate);
-    let rangeEnd = new Date(currentDate);
     if (view === 'week') {
       const week = getWeekDates(currentDate);
       return { start: week[0], end: week[6] };
     }
-    // month
     const monthStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
     const monthEnd = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
     return { start: monthStart, end: monthEnd };
@@ -127,6 +124,8 @@ function App() {
     const endYmd = formatYmd(end);
     return source.flatMap((ev) => {
       if (ev.repeat.type === 'none') return [ev];
+      const cappedEnd =
+        ev.repeat.endDate && ev.repeat.endDate < endYmd ? ev.repeat.endDate : endYmd;
       const baseForm: EventForm = {
         title: ev.title,
         date: ev.date,
@@ -139,7 +138,7 @@ function App() {
         repeat: {
           type: ev.repeat.type,
           interval: ev.repeat.interval,
-          endDate: ev.repeat.endDate && ev.repeat.endDate < endYmd ? ev.repeat.endDate : endYmd,
+          endDate: cappedEnd,
         },
       };
       const occurrences = generateRecurringEvents(baseForm)

@@ -3,6 +3,12 @@ import { EventForm, RepeatType } from '../types';
 // 반복 종료 상한 (요구사항: 2025-12-31까지 전개)
 const MAX_END_DATE = '2025-12-31' as const;
 
+function getEffectiveEndDate(repeatEndDate?: string): Date {
+  // 명시적 종료일이 있으면 그대로 사용, 없으면 상한 적용
+  if (repeatEndDate) return new Date(repeatEndDate);
+  return new Date(MAX_END_DATE);
+}
+
 /**
  * 윤년 여부를 판별
  * - 4로 나누어떨어지고, 100으로는 나누어떨어지지 않거나 400으로 나누어떨어질 경우 윤년
@@ -123,11 +129,7 @@ function isValidRepeatType(value: unknown): value is RepeatType {
 export function generateRecurringEvents(baseEvent: EventForm): EventForm[] {
   const interval = clampInterval(baseEvent.repeat.interval);
   const start = new Date(baseEvent.date);
-  const hasEnd = Boolean(baseEvent.repeat.endDate);
-  const explicitEnd = hasEnd ? new Date(baseEvent.repeat.endDate as string) : null;
-  const maxEnd = new Date(MAX_END_DATE);
-  // 명시적인 종료일이 있으면 그대로 사용, 없으면 상한 날짜까지 전개
-  const end: Date | null = explicitEnd ?? maxEnd;
+  const end: Date | null = getEffectiveEndDate(baseEvent.repeat.endDate);
 
   // 종료일보다 시작일이 늦으면 잘못된 입력 → 빈 배열
   if (end && start > end) {
