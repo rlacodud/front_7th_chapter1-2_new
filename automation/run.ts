@@ -68,6 +68,7 @@ function printWorkflowSummary(): void {
   console.log(chalk.white('  3. GREEN     → 기능 구현 (CodeAgent)'));
   console.log(chalk.white('  4. REFACTOR  → 품질 검토 (RefactorReviewAgent)'));
   console.log(chalk.white('  5. COMMIT    → 버전 관리 (GitAgent)\n'));
+  console.log(chalk.yellow('⚡ 대화형 모드: 각 단계 시작 전 승인 요청\n'));
   console.log(chalk.gray('━'.repeat(60)) + '\n');
 }
 
@@ -88,12 +89,13 @@ async function main() {
     // Orchestrator 가져오기
     const orchestrator = getOrchestrator();
 
-    // 워크플로우 실행
+    // 워크플로우 실행 (대화형 모드 활성화)
     const result = await orchestrator.run({
       startStage: 'SPEC',
       endStage: 'COMMIT',
       skipStages: [],
       dryRun: false,
+      interactive: true, // 대화형 모드
     });
 
     // 결과 출력
@@ -105,12 +107,13 @@ async function main() {
       console.log(chalk.green.bold('✅ 워크플로우 성공\n'));
       console.log(chalk.white(`완료된 단계: ${result.completedStages.join(' → ')}\n`));
 
-      console.log(chalk.blue('📁 생성된 파일:\n'));
+      console.log(chalk.blue('📁 생성/수정된 파일:\n'));
       console.log(chalk.gray('  - docs/spec.md'));
       console.log(chalk.gray('  - src/__tests__/**/*.spec.ts'));
-      console.log(chalk.gray('  - src/utils/*.ts, src/hooks/*.ts, src/App.tsx, server.js'));
+      console.log(chalk.gray('  - src/utils/*.ts, src/hooks/*.ts, src/App.tsx'));
       console.log(chalk.gray('  - docs/test-guides/execution-log.md'));
       console.log(chalk.gray('  - state/commit-messages.json\n'));
+      console.log(chalk.green('  ⚠️  server.js는 수정되지 않았습니다 (MSW 모킹)\n'));
 
       console.log(chalk.yellow('💡 다음 단계:\n'));
       console.log(chalk.white('  - 생성된 코드 검토'));

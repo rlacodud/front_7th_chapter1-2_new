@@ -14,7 +14,7 @@ import { getWorkflowManager } from './workflow-manager.js';
 import { getConfigLoader } from '../utils/config-loader.js';
 import { getStatusTracker } from '../utils/status-tracker.js';
 import { createLogger } from '../utils/logger.js';
-import { closeApprovalManager } from '../utils/approval-manager.js';
+import { closeApprovalManager, getApprovalManager } from '../utils/approval-manager.js';
 
 const logger = createLogger('orchestrator');
 
@@ -23,6 +23,7 @@ export interface OrchestratorOptions {
   endStage?: Stage;
   skipStages?: Stage[];
   dryRun?: boolean;
+  interactive?: boolean; // 대화형 모드 활성화
 }
 
 export interface OrchestratorResult {
@@ -39,6 +40,7 @@ export class Orchestrator {
   private workflowManager = getWorkflowManager();
   private configLoader = getConfigLoader();
   private statusTracker = getStatusTracker();
+  private approvalManager = getApprovalManager();
   private agents: Map<string, any> = new Map();
 
   constructor() {
@@ -129,7 +131,13 @@ export class Orchestrator {
     logger.step('AI Agent TDD 워크플로우 시작');
     logger.divider();
 
-    const { startStage = 'SPEC', endStage = 'COMMIT', skipStages = [], dryRun = false } = options;
+    const {
+      startStage = 'SPEC',
+      endStage = 'COMMIT',
+      skipStages = [],
+      dryRun = false,
+      interactive = true, // 기본값: 대화형 모드 활성화
+    } = options;
 
     const completedStages: Stage[] = [];
     let currentStage: Stage | null = null;
@@ -153,6 +161,26 @@ export class Orchestrator {
           logger.info(`단계 건너뛰기: ${currentStage}`);
           currentStage = await this.workflowManager.transition(currentStage);
           continue;
+        }
+
+        // 대화형 모드: 단계 시작 전 승인 요청
+        if (interactive && !dryRun) {
+          const approval = await this.approvalManager.requestStageStart(currentStage);
+
+          if (approval === 'ABORT') {
+            logger.warn('사용자가 워크플로우를 중단했습니다.');
+            return {
+              success: false,
+              completedStages,
+              failedStage: currentStage,
+              error: '사용자가 워크플로우를 중단했습니다.',
+            };
+          } else if (approval === 'SKIP') {
+            logger.info(`사용자가 ${currentStage} 단계를 건너뛰었습니다.`);
+            currentStage = await this.workflowManager.transition(currentStage);
+            continue;
+          }
+          // approval === 'PROCEED' 이면 계속 진행
         }
 
         // 단계 실행
