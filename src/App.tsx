@@ -1,12 +1,4 @@
-import {
-  Notifications,
-  ChevronLeft,
-  ChevronRight,
-  Delete,
-  Edit,
-  Close,
-  Repeat,
-} from '@mui/icons-material';
+import { Notifications, ChevronLeft, ChevronRight, Delete, Edit, Close } from '@mui/icons-material';
 import {
   Alert,
   AlertTitle,
@@ -38,6 +30,7 @@ import {
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 
+import { RepeatIcon } from './components/RepeatIcon';
 import { useCalendarView } from './hooks/useCalendarView.ts';
 import { useEventForm } from './hooks/useEventForm.ts';
 import { useEventOperations } from './hooks/useEventOperations.ts';
@@ -263,7 +256,7 @@ function App() {
                           >
                             <Stack direction="row" spacing={1} alignItems="center">
                               {isNotified && <Notifications fontSize="small" />}
-                              {event.repeat.type !== 'none' && <Repeat fontSize="small" />}
+                              <RepeatIcon isRepeating={event.repeat.type !== 'none'} />
                               <Typography
                                 variant="caption"
                                 noWrap
@@ -351,7 +344,7 @@ function App() {
                                 >
                                   <Stack direction="row" spacing={1} alignItems="center">
                                     {isNotified && <Notifications fontSize="small" />}
-                                    {event.repeat.type !== 'none' && <Repeat fontSize="small" />}
+                                    <RepeatIcon isRepeating={event.repeat.type !== 'none'} />
                                     <Typography
                                       variant="caption"
                                       noWrap
@@ -604,9 +597,10 @@ function App() {
                   <Stack>
                     <Stack direction="row" spacing={1} alignItems="center">
                       {notifiedEvents.includes(event.id) && <Notifications color="error" />}
-                      {event.repeat.type !== 'none' && index === 0 && (
-                        <Repeat data-testid="repeat-icon" />
-                      )}
+                      <RepeatIcon
+                        isRepeating={event.repeat.type !== 'none'}
+                        showTestId={index === 0}
+                      />
                       <Typography
                         fontWeight={notifiedEvents.includes(event.id) ? 'bold' : 'normal'}
                         color={notifiedEvents.includes(event.id) ? 'error' : 'inherit'}
