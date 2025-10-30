@@ -191,6 +191,62 @@ describe('일정 뷰', () => {
   });
 });
 
+describe('반복 일정 표시', () => {
+  it('반복 일정은 캘린더 뷰에서 반복 아이콘으로 구분되어 표시된다', async () => {
+    server.use(
+      http.get('/api/events', () => {
+        return HttpResponse.json({
+          events: [
+            {
+              id: 'r1',
+              title: '반복 회의',
+              date: '2025-10-01',
+              startTime: '09:00',
+              endTime: '10:00',
+              description: '반복',
+              location: '회의실',
+              category: '업무',
+              repeat: { type: 'weekly', interval: 1, endDate: '2025-10-31' },
+              notificationTime: 10,
+            },
+          ],
+        });
+      })
+    );
+
+    setup(<App />);
+
+    expect(await screen.findByTestId('repeat-icon')).toBeInTheDocument();
+  });
+
+  it('단일 일정은 캘린더 뷰에서 반복 아이콘이 표시되지 않는다', async () => {
+    server.use(
+      http.get('/api/events', () => {
+        return HttpResponse.json({
+          events: [
+            {
+              id: 's1',
+              title: '단일 일정',
+              date: '2025-10-02',
+              startTime: '11:00',
+              endTime: '12:00',
+              description: '단일',
+              location: '회의실',
+              category: '업무',
+              repeat: { type: 'none', interval: 0 },
+              notificationTime: 10,
+            },
+          ],
+        });
+      })
+    );
+
+    setup(<App />);
+
+    expect(screen.queryByTestId('repeat-icon')).not.toBeInTheDocument();
+  });
+});
+
 describe('검색 기능', () => {
   beforeEach(() => {
     server.use(
