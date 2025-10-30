@@ -36,7 +36,7 @@ import { useEventOperations } from './hooks/useEventOperations.ts';
 import { useNotifications } from './hooks/useNotifications.ts';
 import { useSearch } from './hooks/useSearch.ts';
 // import { Event, EventForm, RepeatType } from './types';
-import { Event, EventForm } from './types';
+import { Event, EventForm, RepeatType } from './types';
 import {
   formatDate,
   formatMonth,
@@ -46,6 +46,7 @@ import {
   getWeeksAtMonth,
 } from './utils/dateUtils';
 import { findOverlappingEvents } from './utils/eventOverlap';
+import { generateRecurringEvents } from './utils/repeatUtils';
 import { getTimeErrorMessage } from './utils/timeValidation';
 
 const categories = ['업무', '개인', '가족', '기타'];
@@ -77,11 +78,11 @@ function App() {
     isRepeating,
     setIsRepeating,
     repeatType,
-    // setRepeatType,
+    setRepeatType,
     repeatInterval,
-    // setRepeatInterval,
+    setRepeatInterval,
     repeatEndDate,
-    // setRepeatEndDate,
+    setRepeatEndDate,
     notificationTime,
     setNotificationTime,
     startTimeError,
@@ -100,7 +101,60 @@ function App() {
 
   const { notifications, notifiedEvents, setNotifications } = useNotifications(events);
   const { view, setView, currentDate, holidays, navigate } = useCalendarView();
-  const { searchTerm, filteredEvents, setSearchTerm } = useSearch(events, currentDate, view);
+
+  const getViewRange = () => {
+    const rangeStart = new Date(currentDate);
+    let rangeEnd = new Date(currentDate);
+    if (view === 'week') {
+      const week = getWeekDates(currentDate);
+      return { start: week[0], end: week[6] };
+    }
+    // month
+    const monthStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+    const monthEnd = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    return { start: monthStart, end: monthEnd };
+  };
+
+  const formatYmd = (d: Date) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
+  const expandEventsForView = (source: Event[], start: Date, end: Date): Event[] => {
+    const endYmd = formatYmd(end);
+    return source.flatMap((ev) => {
+      if (ev.repeat.type === 'none') return [ev];
+      const baseForm: EventForm = {
+        title: ev.title,
+        date: ev.date,
+        startTime: ev.startTime,
+        endTime: ev.endTime,
+        description: ev.description,
+        location: ev.location,
+        category: ev.category,
+        notificationTime: ev.notificationTime,
+        repeat: {
+          type: ev.repeat.type,
+          interval: ev.repeat.interval,
+          endDate: ev.repeat.endDate && ev.repeat.endDate < endYmd ? ev.repeat.endDate : endYmd,
+        },
+      };
+      const occurrences = generateRecurringEvents(baseForm)
+        .filter((o) => new Date(o.date) >= start && new Date(o.date) <= end)
+        .map((o, idx) => ({ ...ev, id: `${ev.id}-${o.date}-${idx}`, date: o.date }));
+      return occurrences;
+    });
+  };
+
+  const viewRange = getViewRange();
+  const expandedEvents = expandEventsForView(events, viewRange.start, viewRange.end);
+  const { searchTerm, filteredEvents, setSearchTerm } = useSearch(
+    expandedEvents,
+    currentDate,
+    view
+  );
 
   const [isOverlapDialogOpen, setIsOverlapDialogOpen] = useState(false);
   const [overlappingEvents, setOverlappingEvents] = useState<Event[]>([]);
@@ -437,8 +491,7 @@ function App() {
             </Select>
           </FormControl>
 
-          {/* ! 반복은 8주차 과제에 포함됩니다. 구현하고 싶어도 참아주세요~ */}
-          {/* {isRepeating && (
+          {isRepeating && (
             <Stack spacing={2}>
               <FormControl fullWidth>
                 <FormLabel>반복 유형</FormLabel>
@@ -475,7 +528,7 @@ function App() {
                 </FormControl>
               </Stack>
             </Stack>
-          )} */}
+          )}
 
           <Button
             data-testid="event-submit-button"
