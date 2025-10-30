@@ -67,6 +67,37 @@ export class ApprovalManager {
   }
 
   /**
+   * 다음 단계 진행 여부 확인 (일반 프롬프트)
+   */
+  async requestProceed(message: string): Promise<boolean> {
+    const approved = await this.askYesNo(chalk.bold.cyan(`${message} (y/n): `));
+    console.log('');
+    return approved;
+  }
+
+  /**
+   * GREEN 하위 범위 진행 여부 확인
+   */
+  async requestGreenScopeProceed(
+    scopeLabel: string,
+    index: number,
+    total: number
+  ): Promise<boolean> {
+    console.log(chalk.cyan('\n────────────────────────────────────────────────────────\n'));
+    console.log(chalk.cyan.bold(`🧩 GREEN 범위 ${index}/${total} 진행: ${scopeLabel}`));
+    console.log(chalk.cyan('\n────────────────────────────────────────────────────────\n'));
+    return this.requestProceed('이 범위를 진행하시겠습니까?');
+  }
+
+  /**
+   * 모든 GREEN 완료 후 REFACTOR 진행 여부 확인
+   */
+  async requestRefactorProceed(): Promise<boolean> {
+    console.log(chalk.green('\n✅ 모든 GREEN 범위를 완료했습니다.'));
+    return this.requestProceed('REFACTOR 단계를 진행하시겠습니까?');
+  }
+
+  /**
    * 커밋 승인 요청
    */
   async requestCommitApproval(

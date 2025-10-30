@@ -10,7 +10,10 @@
     "description": "반복 유형 선택, 아이콘 표시, 종료 날짜, 단일/전체 수정 및 삭제",
     "type": "feature",
     "priority": "high",
-    "requirements_path": "docs/requirements.md"
+    "requirements_path": "docs/requirements.md",
+    "current_feature_number": 1,
+    "total_features": 0,
+    "completed_features": []
   },
   "current_phase": {
     "name": null,
@@ -20,7 +23,7 @@
     "substep": null
   },
   "phases": {
-    "RED": {
+    "SPEC": {
       "status": "pending",
       "started_at": null,
       "completed_at": null,
@@ -34,7 +37,18 @@
           "duration_seconds": null,
           "attempts": 0,
           "outputs": []
-        },
+        }
+      },
+      "exit_criteria": {
+        "spec_created": false
+      }
+    },
+    "RED": {
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "duration_seconds": null,
+      "steps": {
         "test_generation": {
           "status": "pending",
           "agent": "test_agent",
@@ -216,6 +230,7 @@
     "execution_time": {
       "total_seconds": 0,
       "by_phase": {
+        "SPEC": 0,
         "RED": 0,
         "GREEN": 0,
         "REFACTOR": 0,

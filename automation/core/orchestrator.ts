@@ -199,6 +199,20 @@ export class Orchestrator {
         completedStages.push(currentStage);
         this.workflowManager.completeStage(currentStage);
 
+        // GREEN 완료 후 REFACTOR 진행 여부 확인 (대화형 모드)
+        if (interactive && currentStage === 'GREEN') {
+          const proceedRefactor = await this.approvalManager.requestRefactorProceed();
+          if (!proceedRefactor) {
+            logger.warn('사용자가 REFACTOR 단계 진행을 중단했습니다.');
+            return {
+              success: false,
+              completedStages,
+              failedStage: 'REFACTOR',
+              error: '사용자가 REFACTOR 진행을 거부했습니다.',
+            } as any;
+          }
+        }
+
         // 다음 단계로 전환
         currentStage = await this.workflowManager.transition(currentStage);
       }
@@ -246,7 +260,135 @@ export class Orchestrator {
       return false;
     }
 
-    // 단계별 Agent 실행
+    // GREEN 단계: 하위 범위(스코프)별로 순차 진행 + 사용자 승인 게이트
+    if (stage === 'GREEN') {
+      // 1) 스코프 로드 (state/test-scope.json 우선, 없으면 기본 목록)
+      let scopes: string[] = [];
+      try {
+        const fs = await import('fs');
+        const path = await import('path');
+        const scopePath = path.resolve(process.cwd(), 'state/test-scope.json');
+        if (fs.existsSync(scopePath)) {
+          const raw = fs.readFileSync(scopePath, 'utf-8');
+          const parsed = JSON.parse(raw);
+          // 예상 형식: { scopes: ["...", "..."] }
+          if (parsed && Array.isArray(parsed.scopes)) {
+            scopes = parsed.scopes;
+          }
+        }
+      } catch {
+        // ignore and fallback
+      }
+
+      if (scopes.length === 0) {
+        scopes = [
+          '1) 반복 유형 선택',
+          '2) 반복 일정 표시',
+          '3) 반복 종료 (2025-12-31까지)',
+          '4) 반복 일정 수정 (단일/전체)',
+          '5) 반복 일정 삭제 (단일/전체)',
+        ];
+      }
+
+      for (let i = 0; i < scopes.length; i++) {
+        const label = scopes[i];
+
+        // 사용자에게 현재 스코프 진행 여부 확인
+        const proceed = await this.approvalManager.requestGreenScopeProceed(
+          label,
+          i + 1,
+          scopes.length
+        );
+        if (!proceed) {
+          logger.warn('사용자가 GREEN 하위 범위 진행을 중단했습니다.');
+          return false;
+        }
+
+        // 1) RED: test_agent 실행 (스코프 한정 테스트 생성)
+        {
+          const agentName = 'test_agent';
+          const agent = this.agents.get(agentName);
+          if (!agent) {
+            logger.error(`Agent를 찾을 수 없습니다: ${agentName}`);
+            return false;
+          }
+          const context: AgentContext = {
+            stage: 'RED',
+            config: this.configLoader.getAgentConfig(agentName),
+            inputs: { scope: label, scope_index: i + 1, scope_total: scopes.length },
+            workflow_status: this.statusTracker.getStatus(),
+          };
+          const result = await agent.run(context);
+          if (!result.success) {
+            logger.error(`Agent 실행 실패: ${agentName}`);
+            return false;
+          }
+        }
+
+        // 2) GREEN: code_agent 실행 (해당 스코프 테스트 통과 구현)
+        {
+          const agentName = 'code_agent';
+          const agent = this.agents.get(agentName);
+          if (!agent) {
+            logger.error(`Agent를 찾을 수 없습니다: ${agentName}`);
+            return false;
+          }
+          const context: AgentContext = {
+            stage: 'GREEN',
+            config: this.configLoader.getAgentConfig(agentName),
+            inputs: { scope: label, scope_index: i + 1, scope_total: scopes.length },
+            workflow_status: this.statusTracker.getStatus(),
+          };
+          const result = await agent.run(context);
+          if (!result.success) {
+            logger.error(`Agent 실행 실패: ${agentName}`);
+            return false;
+          }
+        }
+
+        // 3) REFACTOR: 사용자 승인 시 refactor_agent 실행
+        {
+          const wantRefactor = await this.approvalManager.requestProceed(
+            '이 스코프에 대해 REFACTOR를 진행하시겠습니까?'
+          );
+          if (wantRefactor) {
+            const agentName = 'refactor_agent';
+            const agent = this.agents.get(agentName);
+            if (!agent) {
+              logger.error(`Agent를 찾을 수 없습니다: ${agentName}`);
+              return false;
+            }
+            const context: AgentContext = {
+              stage: 'REFACTOR',
+              config: this.configLoader.getAgentConfig(agentName),
+              inputs: { scope: label, scope_index: i + 1, scope_total: scopes.length },
+              workflow_status: this.statusTracker.getStatus(),
+            };
+            const result = await agent.run(context);
+            if (!result.success) {
+              logger.error(`Agent 실행 실패: ${agentName}`);
+              return false;
+            }
+          }
+        }
+
+        // 다음 스코프로 진행할지 사용자에게 확인 (마지막은 제외하고 질문)
+        if (i < scopes.length - 1) {
+          const next = await this.approvalManager.requestProceed(
+            '다음 GREEN 범위를 진행하시겠습니까?'
+          );
+          if (!next) {
+            logger.warn('사용자가 다음 GREEN 범위 진행을 중단했습니다.');
+            return false;
+          }
+        }
+      }
+
+      logger.success('모든 GREEN 하위 범위를 완료했습니다.');
+      return true;
+    }
+
+    // 그 외 단계: 기존 로직대로 에이전트 순차 실행
     for (const agentName of stageConfig.agents) {
       const agent = this.agents.get(agentName);
 
