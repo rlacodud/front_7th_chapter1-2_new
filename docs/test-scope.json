@@ -1,0 +1,31 @@
+{
+  "feature": "repeat event schedule",
+  "scenarios": ["daily", "weekly", "monthly", "yearly"],
+  "edgeCases": [
+    "31-day monthly only on 31st",
+    "leap-year 02-29 yearly only on leap years",
+    "end date upper bound 2025-12-31"
+  ],
+  "tests": {
+    "unit": [
+      "generateRecurringEvents: daily generates consecutive dates",
+      "generateRecurringEvents: weekly generates 7-day steps",
+      "generateRecurringEvents: monthly on 31st only generates months with 31st",
+      "generateRecurringEvents: yearly on 02-29 only in leap years",
+      "generateRecurringEvents: stop at end date (<= 2025-12-31)"
+    ],
+    "hooks": [
+      "useEventForm: toggling isRepeating shows repeat options state",
+      "useEventForm: selecting repeatType updates state and save payload"
+    ],
+    "integration": [
+      "App: shows repeat controls when '반복 일정' is checked",
+      "App: can select repeat type and interval",
+      "App: shows repeat indicator for repeating events",
+      "App: single vs all edit via dialog changes repeat flag",
+      "App: single vs all delete via dialog"
+    ]
+  },
+  "estimatedTests": 12,
+  "testPriority": "high"
+}
