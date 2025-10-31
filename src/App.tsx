@@ -28,7 +28,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { RepeatIcon } from './components/RepeatIcon';
 import { useCalendarView } from './hooks/useCalendarView.ts';
@@ -96,8 +96,9 @@ function App() {
     editEvent,
   } = useEventForm();
 
-  const { events, saveEvent, deleteEvent } = useEventOperations(Boolean(editingEvent), () =>
-    setEditingEvent(null)
+  const { events, saveEvent, deleteEvent, fetchEvents } = useEventOperations(
+    Boolean(editingEvent),
+    () => setEditingEvent(null)
   );
 
   const { notifications, notifiedEvents, setNotifications } = useNotifications(events);
@@ -120,36 +121,49 @@ function App() {
     return `${y}-${m}-${day}`;
   };
 
-  const expandEventsForView = (source: Event[], start: Date, end: Date): Event[] => {
-    const endYmd = formatYmd(end);
-    return source.flatMap((ev) => {
-      if (ev.repeat.type === 'none') return [ev];
-      const cappedEnd =
-        ev.repeat.endDate && ev.repeat.endDate < endYmd ? ev.repeat.endDate : endYmd;
-      const baseForm: EventForm = {
-        title: ev.title,
-        date: ev.date,
-        startTime: ev.startTime,
-        endTime: ev.endTime,
-        description: ev.description,
-        location: ev.location,
-        category: ev.category,
-        notificationTime: ev.notificationTime,
-        repeat: {
-          type: ev.repeat.type,
-          interval: ev.repeat.interval,
-          endDate: cappedEnd,
-        },
-      };
-      const occurrences = generateRecurringEvents(baseForm)
-        .filter((o) => new Date(o.date) >= start && new Date(o.date) <= end)
-        .map((o, idx) => ({ ...ev, id: `${ev.id}-${o.date}-${idx}`, date: o.date }));
-      return occurrences;
-    });
-  };
+  // 삭제된 반복 일정 날짜를 추적 (단일 삭제 시 해당 날짜의 인스턴스만 필터링)
+  const [deletedRecurringDates, setDeletedRecurringDates] = useState<Map<string, Set<string>>>(
+    new Map()
+  );
+
+  const expandEventsForView = useCallback(
+    (source: Event[], start: Date, end: Date): Event[] => {
+      const endYmd = formatYmd(end);
+      return source.flatMap((ev) => {
+        if (ev.repeat.type === 'none') return [ev];
+        const cappedEnd =
+          ev.repeat.endDate && ev.repeat.endDate < endYmd ? ev.repeat.endDate : endYmd;
+        const baseForm: EventForm = {
+          title: ev.title,
+          date: ev.date,
+          startTime: ev.startTime,
+          endTime: ev.endTime,
+          description: ev.description,
+          location: ev.location,
+          category: ev.category,
+          notificationTime: ev.notificationTime,
+          repeat: {
+            type: ev.repeat.type,
+            interval: ev.repeat.interval,
+            endDate: cappedEnd,
+          },
+        };
+        const deletedDates = deletedRecurringDates.get(ev.id) || new Set();
+        const occurrences = generateRecurringEvents(baseForm)
+          .filter((o) => new Date(o.date) >= start && new Date(o.date) <= end)
+          .filter((o) => !deletedDates.has(o.date)) // 단일 삭제된 날짜 필터링
+          .map((o, idx) => ({ ...ev, id: `${ev.id}-${o.date}-${idx}`, date: o.date }));
+        return occurrences;
+      });
+    },
+    [deletedRecurringDates]
+  );
 
   const viewRange = getViewRange();
-  const expandedEvents = expandEventsForView(events, viewRange.start, viewRange.end);
+  const expandedEvents = useMemo(
+    () => expandEventsForView(events, viewRange.start, viewRange.end),
+    [events, viewRange.start, viewRange.end, expandEventsForView]
+  );
   const { searchTerm, filteredEvents, setSearchTerm } = useSearch(
     expandedEvents,
     currentDate,
@@ -158,6 +172,11 @@ function App() {
 
   const [isOverlapDialogOpen, setIsOverlapDialogOpen] = useState(false);
   const [overlappingEvents, setOverlappingEvents] = useState<Event[]>([]);
+
+  // 반복 일정 삭제 확인 다이얼로그 상태
+  const [isRecurringDeleteDialogOpen, setIsRecurringDeleteDialogOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [selectedEventDate, setSelectedEventDate] = useState<string | null>(null);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -638,7 +657,27 @@ function App() {
                     <IconButton aria-label="Edit event" onClick={() => editEvent(event)}>
                       <Edit />
                     </IconButton>
-                    <IconButton aria-label="Delete event" onClick={() => deleteEvent(event.id)}>
+                    <IconButton
+                      aria-label="Delete event"
+                      onClick={() => {
+                        // 전개된 이벤트인지 확인 (originalId가 있으면 전개된 이벤트)
+                        const originalId = (event as unknown as { originalId?: string })
+                          ?.originalId;
+                        const originalEvent = originalId
+                          ? events.find((e) => e.id === originalId)
+                          : null;
+                        const eventToCheck = originalEvent || event;
+
+                        // 반복 일정인 경우 확인 다이얼로그 표시
+                        if (eventToCheck.repeat.type !== 'none') {
+                          setSelectedEvent(eventToCheck);
+                          setSelectedEventDate(event.date);
+                          setIsRecurringDeleteDialogOpen(true);
+                        } else {
+                          deleteEvent(event.id);
+                        }
+                      }}
+                    >
                       <Delete />
                     </IconButton>
                   </Stack>
@@ -687,6 +726,87 @@ function App() {
             }}
           >
             계속 진행
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* 반복 일정 삭제 확인 다이얼로그 */}
+      <Dialog
+        open={isRecurringDeleteDialogOpen}
+        onClose={() => setIsRecurringDeleteDialogOpen(false)}
+      >
+        <DialogTitle>반복 일정 삭제</DialogTitle>
+        <DialogContent>
+          <DialogContentText>해당 일정만 삭제하시겠어요?</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={() => {
+              // 단일 삭제: 해당 날짜의 인스턴스만 필터링 (원본 반복 일정은 유지)
+              setIsRecurringDeleteDialogOpen(false);
+              if (selectedEvent && selectedEventDate) {
+                setDeletedRecurringDates((prev) => {
+                  const newMap = new Map(prev);
+                  const dates = new Set(newMap.get(selectedEvent.id) || []);
+                  dates.add(selectedEventDate);
+                  newMap.set(selectedEvent.id, dates);
+                  return newMap;
+                });
+                enqueueSnackbar('일정이 삭제되었습니다.', { variant: 'info' });
+              }
+              setSelectedEvent(null);
+              setSelectedEventDate(null);
+            }}
+          >
+            예
+          </Button>
+          <Button
+            onClick={async () => {
+              // 전체 삭제: 반복 일정의 모든 일정 삭제
+              setIsRecurringDeleteDialogOpen(false);
+              if (selectedEvent) {
+                const repeatId = (selectedEvent.repeat as { id?: string }).id;
+                if (repeatId) {
+                  // repeat.id가 있는 경우: API로 전체 삭제
+                  try {
+                    const response = await fetch(`/api/recurring-events/${repeatId}`, {
+                      method: 'DELETE',
+                    });
+
+                    if (!response.ok) {
+                      throw new Error('Failed to delete recurring events');
+                    }
+
+                    // 삭제된 반복 일정 날짜 추적 정보도 제거
+                    setDeletedRecurringDates((prev) => {
+                      const newMap = new Map(prev);
+                      newMap.delete(selectedEvent.id);
+                      return newMap;
+                    });
+
+                    // 이벤트 목록 새로고침
+                    await fetchEvents();
+                    enqueueSnackbar('일정이 삭제되었습니다.', { variant: 'info' });
+                  } catch (error) {
+                    console.error('Error deleting recurring events:', error);
+                    enqueueSnackbar('일정 삭제 실패', { variant: 'error' });
+                  }
+                } else {
+                  // repeat.id가 없는 경우: 원본 이벤트만 삭제 (단일 삭제와 동일하게 처리)
+                  // 삭제된 반복 일정 날짜 추적 정보도 제거
+                  setDeletedRecurringDates((prev) => {
+                    const newMap = new Map(prev);
+                    newMap.delete(selectedEvent.id);
+                    return newMap;
+                  });
+                  deleteEvent(selectedEvent.id);
+                }
+              }
+              setSelectedEvent(null);
+              setSelectedEventDate(null);
+            }}
+          >
+            아니오
           </Button>
         </DialogActions>
       </Dialog>
