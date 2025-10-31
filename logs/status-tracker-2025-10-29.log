@@ -1,0 +1,42 @@
+[2025-10-29T16:53:16.889Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T16:53:16.889Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T16:53:56.893Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T16:53:56.894Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T16:54:33.941Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T16:54:33.942Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T16:55:44.549Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.
+[2025-10-29T16:59:59.979Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T16:59:59.980Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T17:00:38.365Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T17:00:38.366Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T17:01:20.434Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T17:01:20.434Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T17:02:31.461Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.
+[2025-10-29T17:10:38.629Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T17:10:38.634Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T17:11:14.374Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T17:11:14.384Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T17:12:41.509Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T17:12:41.512Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T17:14:34.184Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.
+[2025-10-29T21:57:25.716Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T21:57:25.716Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T21:58:02.673Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T21:58:02.673Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T21:58:40.991Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T21:58:40.992Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T21:59:44.963Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.
+[2025-10-29T22:03:17.055Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T22:03:17.056Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T22:03:52.667Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T22:03:52.668Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T22:04:32.338Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T22:04:32.339Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T22:05:35.111Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.
+[2025-10-29T23:02:24.754Z] [INFO] [status-tracker] Workflow status loaded
+[2025-10-29T23:02:24.754Z] [INFO] [status-tracker] Phase started: SPEC
+[2025-10-29T23:03:11.198Z] [INFO] [status-tracker] SUCCESS: Phase completed: SPEC
+[2025-10-29T23:03:11.198Z] [INFO] [status-tracker] Phase started: RED
+[2025-10-29T23:03:50.868Z] [INFO] [status-tracker] SUCCESS: Phase completed: RED
+[2025-10-29T23:03:50.868Z] [INFO] [status-tracker] Phase started: GREEN
+[2025-10-29T23:05:01.995Z] [ERROR] [status-tracker] Error logged: 테스트가 여전히 실패합니다. 구현을 검토하세요.

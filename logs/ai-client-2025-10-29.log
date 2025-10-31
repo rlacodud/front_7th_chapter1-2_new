@@ -1,0 +1,54 @@
+[2025-10-29T16:53:16.891Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T16:53:16.891Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T16:53:56.891Z] [INFO] [ai-client] SUCCESS: Anthropic response received (40000ms)
+[2025-10-29T16:53:56.896Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T16:53:56.896Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T16:54:31.391Z] [INFO] [ai-client] SUCCESS: Anthropic response received (34495ms)
+[2025-10-29T16:54:36.284Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T16:54:36.284Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T16:55:36.643Z] [INFO] [ai-client] SUCCESS: Anthropic response received (60359ms)
+[2025-10-29T16:59:59.981Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T16:59:59.982Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:00:38.362Z] [INFO] [ai-client] SUCCESS: Anthropic response received (38380ms)
+[2025-10-29T17:00:38.367Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T17:00:38.367Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:01:12.659Z] [INFO] [ai-client] SUCCESS: Anthropic response received (34292ms)
+[2025-10-29T17:01:27.942Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T17:01:27.942Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:02:28.909Z] [INFO] [ai-client] SUCCESS: Anthropic response received (60967ms)
+[2025-10-29T17:10:38.647Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T17:10:38.650Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:11:11.138Z] [INFO] [ai-client] SUCCESS: Anthropic response received (32487ms)
+[2025-10-29T17:11:14.409Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T17:11:14.409Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:11:51.063Z] [INFO] [ai-client] SUCCESS: Anthropic response received (36654ms)
+[2025-10-29T17:13:08.941Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T17:13:08.943Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T17:14:09.418Z] [INFO] [ai-client] SUCCESS: Anthropic response received (60472ms)
+[2025-10-29T21:57:25.718Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T21:57:25.718Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T21:58:02.669Z] [INFO] [ai-client] SUCCESS: Anthropic response received (36951ms)
+[2025-10-29T21:58:02.675Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T21:58:02.676Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T21:58:37.989Z] [INFO] [ai-client] SUCCESS: Anthropic response received (35313ms)
+[2025-10-29T21:58:43.809Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T21:58:43.809Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T21:59:41.471Z] [INFO] [ai-client] SUCCESS: Anthropic response received (57662ms)
+[2025-10-29T22:03:17.057Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T22:03:17.057Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T22:03:52.663Z] [INFO] [ai-client] SUCCESS: Anthropic response received (35606ms)
+[2025-10-29T22:03:52.670Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T22:03:52.670Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T22:04:29.135Z] [INFO] [ai-client] SUCCESS: Anthropic response received (36465ms)
+[2025-10-29T22:04:35.169Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T22:04:35.169Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T22:05:31.624Z] [INFO] [ai-client] SUCCESS: Anthropic response received (56454ms)
+[2025-10-29T23:02:24.756Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T23:02:24.756Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T23:03:11.194Z] [INFO] [ai-client] SUCCESS: Anthropic response received (46438ms)
+[2025-10-29T23:03:11.200Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T23:03:11.200Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T23:03:47.409Z] [INFO] [ai-client] SUCCESS: Anthropic response received (36209ms)
+[2025-10-29T23:03:53.636Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-29T23:03:53.636Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-29T23:04:51.488Z] [INFO] [ai-client] SUCCESS: Anthropic response received (57852ms)

@@ -1,0 +1,104 @@
+[2025-10-30T12:59:59.067Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T12:59:59.067Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T13:01:11.594Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T13:01:11.595Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T13:18:31.451Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T13:18:31.452Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T13:29:58.147Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T13:29:58.148Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T13:30:37.746Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T13:30:37.747Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T13:31:26.507Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T13:31:26.507Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T13:38:21.356Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T13:38:21.357Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T13:39:06.157Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T13:39:06.158Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T13:45:11.343Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T13:45:11.344Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T14:06:37.922Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:06:37.922Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:07:40.362Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T14:07:40.363Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T14:14:40.427Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:14:40.427Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:15:02.642Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:15:02.642Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:16:12.496Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T14:16:12.496Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T14:23:37.161Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:23:37.161Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:23:47.710Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:23:47.710Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:28:30.990Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:28:30.990Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:29:40.733Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:29:40.737Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:31:18.241Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T14:31:18.242Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T14:32:30.030Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T14:32:30.031Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T14:38:48.812Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T14:38:48.812Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T14:40:24.859Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T14:40:24.861Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T14:42:54.603Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T14:42:54.604Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T15:05:27.908Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T15:05:27.909Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T15:07:09.218Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T15:07:09.220Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T15:08:43.396Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T15:08:43.397Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T15:23:24.217Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T15:23:24.218Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T15:25:09.880Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T15:25:09.882Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T15:27:24.923Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T15:27:24.923Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T15:29:39.910Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T15:29:39.910Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T15:31:09.915Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T15:31:09.917Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T15:37:33.239Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T15:37:33.240Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T15:48:19.186Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T15:48:19.186Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T15:50:13.639Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T15:50:13.641Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T15:54:50.597Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T15:54:50.600Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T16:06:33.389Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:06:33.389Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:08:03.197Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:08:03.197Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:10:00.447Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T16:10:00.448Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T16:13:11.054Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T16:13:11.055Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T16:21:37.531Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:21:37.531Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:23:29.740Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T16:23:29.741Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T16:26:38.842Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:26:38.842Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:28:09.252Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T16:28:09.253Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T16:34:39.947Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:34:39.947Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:36:22.066Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T16:36:22.068Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T16:38:49.532Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T16:38:49.533Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T16:52:17.175Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T16:52:17.175Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T16:54:09.790Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: SPEC
+[2025-10-30T16:54:09.792Z] [INFO] [workflow-manager] 단계 전환: SPEC → RED
+[2025-10-30T16:56:35.568Z] [INFO] [workflow-manager] SUCCESS: 단계 완료: RED
+[2025-10-30T16:56:35.569Z] [INFO] [workflow-manager] 단계 전환: RED → GREEN
+[2025-10-30T17:09:27.562Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T17:09:27.562Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T17:29:04.971Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T17:29:04.972Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC
+[2025-10-30T17:37:22.824Z] [INFO] [workflow-manager] STEP: 워크플로우 시작
+[2025-10-30T17:37:22.825Z] [INFO] [workflow-manager] 단계 전환: 시작 → SPEC

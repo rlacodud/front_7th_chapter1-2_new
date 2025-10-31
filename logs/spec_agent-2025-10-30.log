@@ -1,0 +1,147 @@
+[2025-10-30T13:00:37.719Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T13:00:37.721Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T13:00:37.723Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:01:11.591Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T13:01:11.593Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T13:01:11.593Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T13:01:11.594Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (33872ms)
+[2025-10-30T13:30:06.788Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T13:30:06.791Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T13:30:06.794Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:30:37.743Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T13:30:37.745Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T13:30:37.745Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T13:30:37.746Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (30954ms)
+[2025-10-30T13:38:29.027Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T13:38:29.029Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T13:38:29.031Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:39:06.155Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T13:39:06.156Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T13:39:06.156Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T13:39:06.157Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (37128ms)
+[2025-10-30T14:06:44.386Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T14:06:44.387Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T14:06:44.387Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T14:06:44.392Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:07:40.361Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T14:07:40.362Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T14:07:40.362Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T14:07:40.362Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (55975ms)
+[2025-10-30T14:15:12.852Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T14:15:12.854Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T14:15:12.854Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T14:15:12.864Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:16:12.493Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T14:16:12.494Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T14:16:12.494Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T14:16:12.495Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (59641ms)
+[2025-10-30T14:29:46.948Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T14:29:46.950Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T14:29:46.950Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T14:29:46.960Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:31:18.237Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T14:31:18.239Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T14:31:18.239Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T14:31:18.240Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (91290ms)
+[2025-10-30T14:38:51.586Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T14:38:51.588Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T14:38:51.588Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T14:38:51.598Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:40:24.853Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T14:40:24.855Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T14:40:24.856Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T14:40:24.858Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (93268ms)
+[2025-10-30T15:05:33.537Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T15:05:33.539Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T15:05:33.539Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T15:05:33.547Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:07:09.214Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T15:07:09.216Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T15:07:09.216Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T15:07:09.217Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (95677ms)
+[2025-10-30T15:23:30.050Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T15:23:30.052Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T15:23:30.052Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T15:23:30.064Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:25:09.876Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T15:25:09.878Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T15:25:09.878Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T15:25:09.879Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (99827ms)
+[2025-10-30T15:29:41.598Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T15:29:41.600Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T15:29:41.600Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T15:29:41.613Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:31:09.912Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T15:31:09.914Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T15:31:09.914Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T15:31:09.915Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (88314ms)
+[2025-10-30T15:48:23.494Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T15:48:23.496Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T15:48:23.496Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T15:48:23.507Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:50:13.636Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T15:50:13.638Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T15:50:13.638Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T15:50:13.639Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (110142ms)
+[2025-10-30T16:06:37.838Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:06:37.840Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:06:37.841Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:06:37.858Z] [ERROR] [spec_agent] spec_agent 실행 실패 {"message":"testFiles is not defined","stack":"ReferenceError: testFiles is not defined\n    at SpecAgent.analyzeCurrentProject (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:507:29)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:25:34)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:33)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:267:34)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T16:08:04.974Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:08:04.976Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:08:04.976Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:08:04.987Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:10:00.442Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T16:10:00.444Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T16:10:00.444Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T16:10:00.446Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (115468ms)
+[2025-10-30T16:21:42.021Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:21:42.022Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:21:42.022Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:21:42.028Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:23:29.736Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T16:23:29.738Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T16:23:29.738Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T16:23:29.739Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (107716ms)
+[2025-10-30T16:26:42.171Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:26:42.174Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:26:42.174Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:26:42.183Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:28:09.249Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T16:28:09.250Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T16:28:09.250Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T16:28:09.251Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (87076ms)
+[2025-10-30T16:34:41.801Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:34:41.803Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:34:41.804Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:34:41.814Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:36:22.060Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T16:36:22.062Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T16:36:22.063Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T16:36:22.065Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (100260ms)
+[2025-10-30T16:52:20.523Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T16:52:20.525Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T16:52:20.525Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T16:52:20.535Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:54:09.784Z] [INFO] [spec_agent] SUCCESS: AI response received
+[2025-10-30T16:54:09.787Z] [INFO] [spec_agent] SUCCESS: Output written: docs/spec.md
+[2025-10-30T16:54:09.787Z] [INFO] [spec_agent] SUCCESS: 명세 생성 완료: docs/spec.md
+[2025-10-30T16:54:09.789Z] [INFO] [spec_agent] SUCCESS: spec_agent 완료 (109262ms)
+[2025-10-30T17:09:31.248Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T17:09:31.251Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T17:09:31.251Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T17:09:31.262Z] [INFO] [spec_agent] STEP: Calling AI: anthropic - claude-sonnet-4-20250514
+[2025-10-30T17:09:31.783Z] [ERROR] [spec_agent] AI call failed {"message":"Anthropic API 호출 실패: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}","stack":"Error: Anthropic API 호출 실패: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}\n    at AIClient.callAnthropic (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:165:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T17:09:31.784Z] [ERROR] [spec_agent] spec_agent 실행 실패 {"message":"AI 호출 실패: Anthropic API 호출 실패: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}","stack":"Error: AI 호출 실패: Anthropic API 호출 실패: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:73:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T17:29:08.513Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T17:29:08.515Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T17:29:08.515Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T17:29:08.527Z] [INFO] [spec_agent] STEP: Calling AI: openai - gpt-4o-mini
+[2025-10-30T17:29:08.801Z] [ERROR] [spec_agent] AI call failed {"message":"OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at AIClient.callOpenAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:112:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T17:29:08.803Z] [ERROR] [spec_agent] spec_agent 실행 실패 {"message":"AI 호출 실패: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: AI 호출 실패: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:73:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T17:37:26.093Z] [INFO] [spec_agent] STEP: spec_agent 실행 시작
+[2025-10-30T17:37:26.098Z] [INFO] [spec_agent] 요구사항 분석 및 명세 생성 시작
+[2025-10-30T17:37:26.098Z] [INFO] [spec_agent] 현재 프로젝트 상태 분석 중...
+[2025-10-30T17:37:26.109Z] [INFO] [spec_agent] STEP: Calling AI: openai - gpt-4o-mini
+[2025-10-30T17:37:26.349Z] [ERROR] [spec_agent] AI call failed {"message":"OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at AIClient.callOpenAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:112:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}
+[2025-10-30T17:37:26.350Z] [ERROR] [spec_agent] spec_agent 실행 실패 {"message":"AI 호출 실패: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: AI 호출 실패: OpenAI API 호출 실패: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:73:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:187:25)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:20)"}

@@ -1,0 +1,181 @@
+[2025-10-30T12:59:59.029Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T12:59:59.066Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T12:59:59.066Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T13:00:37.717Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T13:01:11.594Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T13:17:41.691Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T13:18:31.451Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T13:22:30.303Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T13:23:47.372Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T13:23:47.372Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T13:29:58.128Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T13:29:58.147Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T13:29:58.147Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T13:30:06.787Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T13:30:37.746Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T13:30:48.590Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T13:31:26.506Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T13:31:38.202Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T13:32:47.251Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T13:32:47.252Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T13:38:21.335Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T13:38:21.356Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T13:38:21.356Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T13:38:29.026Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T13:39:06.157Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T13:44:35.377Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T13:45:11.343Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T13:45:36.191Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T13:45:55.688Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T13:45:55.688Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T14:06:37.899Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:06:37.921Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:06:37.922Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:06:44.386Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T14:07:40.362Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T14:11:51.039Z] [WARN] [orchestrator] 사용자가 워크플로우를 중단했습니다.
+[2025-10-30T14:14:40.407Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:14:40.426Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:14:40.427Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:15:02.621Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:15:02.642Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:15:02.642Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:15:12.851Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T14:16:12.495Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T14:23:35.265Z] [WARN] [orchestrator] 사용자가 워크플로우를 중단했습니다.
+[2025-10-30T14:23:37.131Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:23:37.160Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:23:37.161Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:23:37.164Z] [ERROR] [orchestrator] 워크플로우 실행 중 오류 발생 {"message":"Cannot set properties of undefined (setting 'status')","stack":"TypeError: Cannot set properties of undefined (setting 'status')\n    at StatusTracker.startPhase (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/status-tracker.ts:236:26)\n    at WorkflowManager.transition (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/workflow-manager.ts:97:24)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:150:49)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:39)\n    at <anonymous> (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:145:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)\n    at async loadESM (node:internal/process/esm_loader:28:7)\n    at async handleMainPromise (node:internal/modules/run_main:113:12)"}
+[2025-10-30T14:23:47.691Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:23:47.709Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:23:47.709Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:23:47.713Z] [ERROR] [orchestrator] 워크플로우 실행 중 오류 발생 {"message":"Cannot set properties of undefined (setting 'status')","stack":"TypeError: Cannot set properties of undefined (setting 'status')\n    at StatusTracker.startPhase (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/status-tracker.ts:236:26)\n    at WorkflowManager.transition (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/workflow-manager.ts:97:24)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:150:49)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:39)\n    at <anonymous> (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:145:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)\n    at async loadESM (node:internal/process/esm_loader:28:7)\n    at async handleMainPromise (node:internal/modules/run_main:113:12)"}
+[2025-10-30T14:28:30.967Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:28:30.990Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:28:30.990Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:28:30.993Z] [ERROR] [orchestrator] 워크플로우 실행 중 오류 발생 {"message":"Cannot set properties of undefined (setting 'status')","stack":"TypeError: Cannot set properties of undefined (setting 'status')\n    at StatusTracker.startPhase (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/status-tracker.ts:236:26)\n    at WorkflowManager.transition (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/workflow-manager.ts:97:24)\n    at Orchestrator.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:150:49)\n    at main (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:93:39)\n    at <anonymous> (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/run.ts:145:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:222:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:323:24)\n    at async loadESM (node:internal/process/esm_loader:28:7)\n    at async handleMainPromise (node:internal/modules/run_main:113:12)"}
+[2025-10-30T14:29:40.698Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:29:40.726Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:29:40.731Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:29:46.947Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T14:31:18.240Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T14:31:37.219Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T14:32:30.030Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T14:38:46.136Z] [WARN] [orchestrator] 사용자가 워크플로우를 중단했습니다.
+[2025-10-30T14:38:48.783Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T14:38:48.811Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T14:38:48.812Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T14:38:51.583Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T14:40:24.858Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T14:41:34.203Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T14:42:54.602Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T14:44:04.141Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T14:44:51.292Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T14:44:51.292Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T15:05:27.884Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T15:05:27.908Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T15:05:27.908Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T15:05:33.537Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T15:07:09.218Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T15:07:25.794Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T15:08:43.396Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T15:09:11.665Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T15:10:10.580Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T15:10:10.580Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T15:23:24.186Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T15:23:24.217Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T15:23:24.217Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T15:23:30.049Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T15:25:09.879Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T15:25:44.638Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T15:27:24.923Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T15:27:59.134Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T15:28:53.140Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T15:28:53.140Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T15:29:39.889Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T15:29:39.910Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T15:29:39.910Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T15:29:41.597Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T15:31:09.915Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T15:36:13.026Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T15:37:33.239Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T15:39:33.733Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T15:40:12.140Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T15:40:12.140Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T15:48:19.163Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T15:48:19.185Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T15:48:19.185Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T15:48:23.493Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T15:50:13.639Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T15:53:40.795Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T15:54:50.597Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T15:56:32.003Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T15:57:25.854Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T15:57:25.855Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T16:06:33.366Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:06:33.389Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:06:33.389Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:06:37.836Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:06:37.859Z] [ERROR] [orchestrator] Agent 실행 실패: spec_agent
+[2025-10-30T16:06:37.859Z] [ERROR] [orchestrator] 단계 실패: SPEC
+[2025-10-30T16:08:03.176Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:08:03.197Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:08:03.197Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:08:04.972Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:10:00.446Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T16:11:41.883Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T16:13:11.054Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T16:13:40.717Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T16:14:26.360Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T16:14:26.361Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T16:21:37.503Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:21:37.531Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:21:37.531Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:21:42.020Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:23:29.739Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T16:25:21.636Z] [WARN] [orchestrator] 사용자가 워크플로우를 중단했습니다.
+[2025-10-30T16:26:38.812Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:26:38.842Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:26:38.842Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:26:42.170Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:28:09.251Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T16:34:24.438Z] [WARN] [orchestrator] 사용자가 워크플로우를 중단했습니다.
+[2025-10-30T16:34:39.918Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:34:39.946Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:34:39.947Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:34:41.800Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:36:22.065Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T16:37:23.825Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T16:38:49.532Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T16:39:53.236Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T16:40:47.591Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T16:40:47.591Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T16:52:17.151Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T16:52:17.175Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T16:52:17.175Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T16:52:20.522Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T16:54:09.789Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-30T16:55:25.433Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-30T16:56:35.567Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-30T16:57:34.931Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-30T16:58:23.451Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-30T16:58:23.452Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-30T17:09:27.539Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T17:09:27.561Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T17:09:27.562Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T17:09:31.247Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T17:09:31.785Z] [ERROR] [orchestrator] Agent 실행 실패: spec_agent
+[2025-10-30T17:09:31.785Z] [ERROR] [orchestrator] 단계 실패: SPEC
+[2025-10-30T17:29:04.948Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T17:29:04.971Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T17:29:04.971Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T17:29:08.512Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T17:29:08.805Z] [ERROR] [orchestrator] Agent 실행 실패: spec_agent
+[2025-10-30T17:29:08.805Z] [ERROR] [orchestrator] 단계 실패: SPEC
+[2025-10-30T17:37:22.799Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-30T17:37:22.824Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-30T17:37:22.824Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-30T17:37:26.088Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-30T17:37:26.351Z] [ERROR] [orchestrator] Agent 실행 실패: spec_agent
+[2025-10-30T17:37:26.351Z] [ERROR] [orchestrator] 단계 실패: SPEC

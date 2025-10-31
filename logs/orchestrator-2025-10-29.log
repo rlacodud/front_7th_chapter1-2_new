@@ -1,0 +1,60 @@
+[2025-10-29T16:53:16.867Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T16:53:16.887Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T16:53:16.888Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T16:53:16.889Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T16:53:56.893Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T16:53:56.894Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T16:54:33.941Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T16:54:33.942Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T16:55:44.550Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T16:55:44.550Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-29T16:59:59.953Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T16:59:59.978Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T16:59:59.978Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T16:59:59.980Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T17:00:38.365Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T17:00:38.366Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T17:01:20.433Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T17:01:20.434Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T17:02:31.461Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T17:02:31.461Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-29T17:10:38.210Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T17:10:38.621Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T17:10:38.621Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T17:10:38.634Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T17:11:14.364Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T17:11:14.385Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T17:12:41.501Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T17:12:41.512Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T17:14:34.190Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T17:14:34.193Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-29T21:57:25.688Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T21:57:25.715Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T21:57:25.715Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T21:57:25.716Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T21:58:02.672Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T21:58:02.674Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T21:58:40.991Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T21:58:40.992Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T21:59:44.964Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T21:59:44.965Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-29T22:03:17.033Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T22:03:17.054Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T22:03:17.055Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T22:03:17.056Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T22:03:52.666Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T22:03:52.668Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T22:04:32.338Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T22:04:32.339Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T22:05:35.111Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T22:05:35.112Z] [ERROR] [orchestrator] 단계 실패: GREEN
+[2025-10-29T23:02:24.725Z] [INFO] [orchestrator] Agent 초기화 중...
+[2025-10-29T23:02:24.752Z] [INFO] [orchestrator] SUCCESS: 5개 Agent 초기화 완료
+[2025-10-29T23:02:24.753Z] [INFO] [orchestrator] STEP: AI Agent TDD 워크플로우 시작
+[2025-10-29T23:02:24.754Z] [INFO] [orchestrator] STEP: SPEC 단계 실행 시작
+[2025-10-29T23:03:11.197Z] [INFO] [orchestrator] SUCCESS: SPEC 단계 완료
+[2025-10-29T23:03:11.198Z] [INFO] [orchestrator] STEP: RED 단계 실행 시작
+[2025-10-29T23:03:50.867Z] [INFO] [orchestrator] SUCCESS: RED 단계 완료
+[2025-10-29T23:03:50.868Z] [INFO] [orchestrator] STEP: GREEN 단계 실행 시작
+[2025-10-29T23:05:01.997Z] [ERROR] [orchestrator] Agent 실행 실패: code_agent
+[2025-10-29T23:05:01.997Z] [ERROR] [orchestrator] 단계 실패: GREEN

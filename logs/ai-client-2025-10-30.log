@@ -1,0 +1,126 @@
+[2025-10-30T13:00:37.724Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:00:37.724Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:01:11.590Z] [INFO] [ai-client] SUCCESS: Anthropic response received (33866ms)
+[2025-10-30T13:17:41.700Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:17:41.701Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:18:15.209Z] [INFO] [ai-client] SUCCESS: Anthropic response received (33507ms)
+[2025-10-30T13:22:46.234Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:22:46.234Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:23:44.335Z] [INFO] [ai-client] SUCCESS: Anthropic response received (58101ms)
+[2025-10-30T13:30:06.795Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:30:06.795Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:30:37.742Z] [INFO] [ai-client] SUCCESS: Anthropic response received (30947ms)
+[2025-10-30T13:30:48.663Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:30:48.663Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:31:23.306Z] [INFO] [ai-client] SUCCESS: Anthropic response received (34643ms)
+[2025-10-30T13:31:40.905Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:31:40.905Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:32:41.665Z] [INFO] [ai-client] SUCCESS: Anthropic response received (60760ms)
+[2025-10-30T13:38:29.031Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:38:29.032Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:39:06.154Z] [INFO] [ai-client] SUCCESS: Anthropic response received (37122ms)
+[2025-10-30T13:44:35.384Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:44:35.384Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:45:08.310Z] [INFO] [ai-client] SUCCESS: Anthropic response received (32925ms)
+[2025-10-30T13:45:39.224Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T13:45:39.225Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T13:45:50.006Z] [INFO] [ai-client] SUCCESS: Anthropic response received (10781ms)
+[2025-10-30T14:06:44.392Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:06:44.393Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:07:40.360Z] [INFO] [ai-client] SUCCESS: Anthropic response received (55967ms)
+[2025-10-30T14:15:12.865Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:15:12.865Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:16:12.492Z] [INFO] [ai-client] SUCCESS: Anthropic response received (59627ms)
+[2025-10-30T14:29:46.961Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:29:46.961Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:31:18.236Z] [INFO] [ai-client] SUCCESS: Anthropic response received (91275ms)
+[2025-10-30T14:31:37.227Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:31:37.227Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:32:13.375Z] [INFO] [ai-client] SUCCESS: Anthropic response received (36147ms)
+[2025-10-30T14:38:51.598Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:38:51.598Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:40:24.852Z] [INFO] [ai-client] SUCCESS: Anthropic response received (93253ms)
+[2025-10-30T14:41:34.211Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:41:34.211Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:42:37.507Z] [INFO] [ai-client] SUCCESS: Anthropic response received (63295ms)
+[2025-10-30T14:44:21.016Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T14:44:21.016Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T14:44:30.684Z] [INFO] [ai-client] SUCCESS: Anthropic response received (9668ms)
+[2025-10-30T15:05:33.547Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:05:33.548Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:07:09.212Z] [INFO] [ai-client] SUCCESS: Anthropic response received (95664ms)
+[2025-10-30T15:07:25.800Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:07:25.800Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:08:22.280Z] [INFO] [ai-client] SUCCESS: Anthropic response received (56480ms)
+[2025-10-30T15:09:32.625Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:09:32.625Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:09:48.416Z] [INFO] [ai-client] SUCCESS: Anthropic response received (15791ms)
+[2025-10-30T15:23:30.065Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:23:30.065Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:25:09.874Z] [INFO] [ai-client] SUCCESS: Anthropic response received (99809ms)
+[2025-10-30T15:25:44.649Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:25:44.649Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:27:04.073Z] [INFO] [ai-client] SUCCESS: Anthropic response received (79423ms)
+[2025-10-30T15:28:19.393Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:28:19.393Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:28:32.033Z] [INFO] [ai-client] SUCCESS: Anthropic response received (12639ms)
+[2025-10-30T15:29:41.613Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:29:41.613Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:31:09.910Z] [INFO] [ai-client] SUCCESS: Anthropic response received (88296ms)
+[2025-10-30T15:36:13.037Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:36:13.037Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:37:16.596Z] [INFO] [ai-client] SUCCESS: Anthropic response received (63558ms)
+[2025-10-30T15:39:50.606Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:39:50.606Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:40:05.997Z] [INFO] [ai-client] SUCCESS: Anthropic response received (15390ms)
+[2025-10-30T15:48:23.507Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:48:23.507Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:50:13.635Z] [INFO] [ai-client] SUCCESS: Anthropic response received (110128ms)
+[2025-10-30T15:53:40.806Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:53:40.806Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:54:33.836Z] [INFO] [ai-client] SUCCESS: Anthropic response received (53030ms)
+[2025-10-30T15:56:48.424Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T15:56:48.424Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T15:57:04.493Z] [INFO] [ai-client] SUCCESS: Anthropic response received (16069ms)
+[2025-10-30T16:08:04.987Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:08:04.987Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:10:00.364Z] [INFO] [ai-client] SUCCESS: Anthropic response received (115375ms)
+[2025-10-30T16:11:41.897Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:11:41.898Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:12:53.519Z] [INFO] [ai-client] SUCCESS: Anthropic response received (71621ms)
+[2025-10-30T16:13:57.785Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:13:57.785Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:14:09.090Z] [INFO] [ai-client] SUCCESS: Anthropic response received (11305ms)
+[2025-10-30T16:21:42.028Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:21:42.028Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:23:29.735Z] [INFO] [ai-client] SUCCESS: Anthropic response received (107707ms)
+[2025-10-30T16:26:42.184Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:26:42.184Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:28:09.248Z] [INFO] [ai-client] SUCCESS: Anthropic response received (87064ms)
+[2025-10-30T16:34:41.814Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:34:41.815Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:36:22.057Z] [INFO] [ai-client] SUCCESS: Anthropic response received (100242ms)
+[2025-10-30T16:37:23.841Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:37:23.842Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:38:32.578Z] [INFO] [ai-client] SUCCESS: Anthropic response received (68736ms)
+[2025-10-30T16:40:09.921Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:40:09.921Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:40:30.320Z] [INFO] [ai-client] SUCCESS: Anthropic response received (20399ms)
+[2025-10-30T16:52:20.536Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:52:20.536Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:54:09.782Z] [INFO] [ai-client] SUCCESS: Anthropic response received (109246ms)
+[2025-10-30T16:55:25.445Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:55:25.445Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:56:19.111Z] [INFO] [ai-client] SUCCESS: Anthropic response received (53666ms)
+[2025-10-30T16:57:56.032Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T16:57:56.032Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T16:58:17.598Z] [INFO] [ai-client] SUCCESS: Anthropic response received (21566ms)
+[2025-10-30T17:09:31.263Z] [INFO] [ai-client] STEP: AI 호출: anthropic - claude-sonnet-4-20250514
+[2025-10-30T17:09:31.263Z] [INFO] [ai-client] Calling Anthropic: claude-sonnet-4-20250514
+[2025-10-30T17:09:31.781Z] [ERROR] [ai-client] Anthropic API call failed {"message":"400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}","stack":"Error: 400 {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CUdkbtyBB8nkzDy6eGbNG\"}\n    at Function.generate (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/@anthropic-ai+sdk@0.32.1/node_modules/@anthropic-ai/sdk/src/error.ts:61:14)\n    at Anthropic.makeStatusError (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/@anthropic-ai+sdk@0.32.1/node_modules/@anthropic-ai/sdk/src/core.ts:414:21)\n    at Anthropic.makeRequest (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/@anthropic-ai+sdk@0.32.1/node_modules/@anthropic-ai/sdk/src/core.ts:478:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.callAnthropic (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:134:24)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)"}
+[2025-10-30T17:29:08.528Z] [INFO] [ai-client] STEP: AI 호출: openai - gpt-4o-mini
+[2025-10-30T17:29:08.528Z] [INFO] [ai-client] Calling OpenAI: gpt-4o-mini
+[2025-10-30T17:29:08.801Z] [ERROR] [ai-client] OpenAI API call failed {"message":"401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at Function.generate (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/error.ts:76:14)\n    at OpenAI.makeStatusError (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.callOpenAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:84:24)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)"}
+[2025-10-30T17:37:26.109Z] [INFO] [ai-client] STEP: AI 호출: openai - gpt-4o-mini
+[2025-10-30T17:37:26.110Z] [INFO] [ai-client] Calling OpenAI: gpt-4o-mini
+[2025-10-30T17:37:26.348Z] [ERROR] [ai-client] OpenAI API call failed {"message":"401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.","stack":"Error: 401 Incorrect API key provided: paste_yo*******here. You can find your API key at https://platform.openai.com/account/api-keys.\n    at Function.generate (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/error.ts:76:14)\n    at OpenAI.makeStatusError (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/core.ts:462:21)\n    at OpenAI.makeRequest (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/node_modules/.pnpm/openai@4.104.0_ws@8.18.0_zod@3.25.76/node_modules/openai/src/core.ts:526:24)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at AIClient.callOpenAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:84:24)\n    at AIClient.prompt (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/utils/ai-client.ts:193:22)\n    at SpecAgent.callAI (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:67:24)\n    at SpecAgent.execute (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/spec-agent.ts:35:25)\n    at SpecAgent.run (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/agents/base-agent.ts:150:22)\n    at Orchestrator.executeStage (/Users/kimchaeyeong/Documents/github/front_7th_chapter1-2/automation/core/orchestrator.ts:409:22)"}
