@@ -1,5 +1,4 @@
 import { Repeat } from '@mui/icons-material';
-import React from 'react';
 
 interface RepeatIconProps {
   isRepeating: boolean;

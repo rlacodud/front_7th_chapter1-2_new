@@ -318,3 +318,4 @@ git config user.email
 3. ⏳ GitAgent AI 구현 (메시지 생성)
 4. ⏳ 실제 TDD 사이클 테스트
 
+

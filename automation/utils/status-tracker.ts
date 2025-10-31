@@ -401,3 +401,4 @@ export function getStatusTracker(filePath?: string): StatusTracker {
   }
   return statusTracker;
 }
+
