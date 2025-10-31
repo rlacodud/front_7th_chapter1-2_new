@@ -4,8 +4,10 @@
  */
 
 import { readFileSync } from 'fs';
+
 import { parse as parseYaml } from 'yaml';
 import { z } from 'zod';
+
 import { AgentConfig } from '../types.js';
 import { createLogger } from './logger.js';
 
@@ -62,26 +64,28 @@ export class ConfigLoader {
   /**
    * YAML 파일 읽기
    */
-  private readYaml(path: string): any {
+  private readYaml(path: string): unknown {
     try {
       const content = readFileSync(path, 'utf-8');
       return parseYaml(content);
-    } catch (error: any) {
-      logger.error(`Failed to read YAML file: ${path}`, error);
-      throw new Error(`YAML 파일 읽기 실패: ${error.message}`);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error(`Failed to read YAML file: ${path}`, errorObj);
+      throw new Error(`YAML 파일 읽기 실패: ${errorObj.message}`);
     }
   }
 
   /**
    * 설정 검증
    */
-  private validate(data: any): AgentConfig {
+  private validate(data: unknown): AgentConfig {
     try {
       const result = AgentConfigSchema.parse(data);
       return result as AgentConfig;
-    } catch (error: any) {
-      logger.error('Configuration validation failed', error);
-      throw new Error(`설정 검증 실패: ${error.message}`);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error('Configuration validation failed', errorObj);
+      throw new Error(`설정 검증 실패: ${errorObj.message}`);
     }
   }
 
@@ -119,7 +123,7 @@ export class ConfigLoader {
   /**
    * 특정 Agent 설정 가져오기
    */
-  getAgentConfig(agentName: string): any {
+  getAgentConfig(agentName: string): unknown {
     const config = this.config || this.load();
 
     if (!config.agents[agentName]) {

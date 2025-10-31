@@ -5,6 +5,7 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'fs';
 import { join, dirname, relative } from 'path';
+
 import { createLogger } from './logger.js';
 
 const logger = createLogger('file-manager');
@@ -42,9 +43,10 @@ export class FileManager {
     try {
       logger.debug(`Reading file: ${path}`);
       return readFileSync(absolutePath, 'utf-8');
-    } catch (error: any) {
-      logger.error(`Failed to read file: ${path}`, error);
-      throw error;
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error(`Failed to read file: ${path}`, errorObj);
+      throw errorObj;
     }
   }
 
@@ -65,9 +67,10 @@ export class FileManager {
       logger.debug(`Writing file: ${path} (${content.length} bytes)`);
       writeFileSync(absolutePath, content, 'utf-8');
       logger.success(`File written: ${path}`);
-    } catch (error: any) {
-      logger.error(`Failed to write file: ${path}`, error);
-      throw error;
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error(`Failed to write file: ${path}`, errorObj);
+      throw errorObj;
     }
   }
 
@@ -82,20 +85,21 @@ export class FileManager {
   /**
    * JSON 파일 읽기
    */
-  readJson<T = any>(path: string): T {
+  readJson<T = unknown>(path: string): T {
     const content = this.read(path);
     try {
       return JSON.parse(content) as T;
-    } catch (error: any) {
-      logger.error(`Failed to parse JSON: ${path}`, error);
-      throw new Error(`Invalid JSON in ${path}: ${error.message}`);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error(`Failed to parse JSON: ${path}`, errorObj);
+      throw new Error(`Invalid JSON in ${path}: ${errorObj.message}`);
     }
   }
 
   /**
    * JSON 파일 쓰기
    */
-  writeJson(path: string, data: any, pretty: boolean = true): void {
+  writeJson(path: string, data: unknown, pretty: boolean = true): void {
     const content = pretty ? JSON.stringify(data, null, 2) : JSON.stringify(data);
     this.write(path, content);
   }
@@ -172,7 +176,7 @@ export class FileManager {
         const relativePath = relative(this.workingDir, fullPath);
         try {
           files[relativePath] = this.read(relativePath);
-        } catch (error) {
+        } catch {
           logger.warn(`Failed to read file: ${relativePath}`);
         }
       }
@@ -190,7 +194,7 @@ export class FileManager {
     for (const path of paths) {
       try {
         files[path] = this.read(path);
-      } catch (error) {
+      } catch {
         logger.warn(`Failed to read file: ${path}`);
         files[path] = '';
       }

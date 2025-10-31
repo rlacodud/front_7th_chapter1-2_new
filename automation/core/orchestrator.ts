@@ -3,18 +3,18 @@
  * 전체 AI Agent TDD 워크플로우 조정
  */
 
-import { Stage, AgentContext, AgentConfig as TypesAgentConfig } from '../types.js';
-import { AgentConfig as BaseAgentConfig } from '../agents/base-agent.js';
+import { getWorkflowManager } from './workflow-manager.js';
+import { BaseAgent } from '../agents/base-agent.js';
+import { CodeAgent } from '../agents/code-agent.js';
+import { GitAgent } from '../agents/git-agent.js';
+import { RefactorReviewAgent } from '../agents/refactor-agent.js';
 import { SpecAgent } from '../agents/spec-agent.js';
 import { TestAgent } from '../agents/test-agent.js';
-import { CodeAgent } from '../agents/code-agent.js';
-import { RefactorReviewAgent } from '../agents/refactor-agent.js';
-import { GitAgent } from '../agents/git-agent.js';
-import { getWorkflowManager } from './workflow-manager.js';
-import { getConfigLoader } from '../utils/config-loader.js';
-import { getStatusTracker } from '../utils/status-tracker.js';
-import { createLogger } from '../utils/logger.js';
+import { Stage, AgentContext } from '../types.js';
 import { closeApprovalManager, getApprovalManager } from '../utils/approval-manager.js';
+import { getConfigLoader } from '../utils/config-loader.js';
+import { createLogger } from '../utils/logger.js';
+import { getStatusTracker } from '../utils/status-tracker.js';
 
 const logger = createLogger('orchestrator');
 
@@ -41,7 +41,7 @@ export class Orchestrator {
   private configLoader = getConfigLoader();
   private statusTracker = getStatusTracker();
   private approvalManager = getApprovalManager();
-  private agents: Map<string, any> = new Map();
+  private agents: Map<string, BaseAgent> = new Map();
 
   constructor() {
     this.initializeAgents();
@@ -132,7 +132,6 @@ export class Orchestrator {
     logger.divider();
 
     const {
-      startStage = 'SPEC',
       endStage = 'COMMIT',
       skipStages = [],
       dryRun = false,
@@ -209,7 +208,7 @@ export class Orchestrator {
               completedStages,
               failedStage: 'REFACTOR',
               error: '사용자가 REFACTOR 진행을 거부했습니다.',
-            } as any;
+            };
           }
         }
 
@@ -225,14 +224,15 @@ export class Orchestrator {
         success: true,
         completedStages,
       };
-    } catch (error: any) {
-      logger.error('워크플로우 실행 중 오류 발생', error);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error('워크플로우 실행 중 오류 발생', errorObj);
 
       return {
         success: false,
         completedStages,
         failedStage: currentStage || undefined,
-        error: error.message,
+        error: errorObj.message,
       };
     } finally {
       // 리소스 정리
@@ -374,9 +374,8 @@ export class Orchestrator {
 
         // 다음 스코프로 진행할지 사용자에게 확인 (마지막은 제외하고 질문)
         if (i < scopes.length - 1) {
-          const next = await this.approvalManager.requestProceed(
-            '다음 GREEN 범위를 진행하시겠습니까?'
-          );
+          const next =
+            await this.approvalManager.requestProceed('다음 GREEN 범위를 진행하시겠습니까?');
           if (!next) {
             logger.warn('사용자가 다음 GREEN 범위 진행을 중단했습니다.');
             return false;

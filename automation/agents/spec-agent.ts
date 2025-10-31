@@ -24,9 +24,9 @@ export class SpecAgent extends BaseAgent {
     this.logger.info('현재 프로젝트 상태 분석 중...');
     const projectAnalysis = this.analyzeCurrentProject();
 
-    // 2. 입력 파일 읽기
-    const requirements = this.readRequirements();
-    const testGuide = this.readTestGuide();
+    // 2. 입력 파일 읽기 (미사용)
+    this.readRequirements();
+    this.readTestGuide();
 
     // 3. 사용자 프롬프트 생성
     const userPrompt = this.getUserPrompt(context, projectAnalysis);
@@ -368,7 +368,7 @@ ${testGuide.substring(0, 1500)}
   private readRequirements(): string {
     try {
       return this.fileManager.read('docs/requirements.md');
-    } catch (error) {
+    } catch {
       this.logWarning('requirements.md not found, using default');
       return '기능 요구사항이 제공되지 않았습니다.';
     }
@@ -380,7 +380,7 @@ ${testGuide.substring(0, 1500)}
   private readTestGuide(): string {
     try {
       return this.fileManager.read('docs/TEST_GUIDE.md');
-    } catch (error) {
+    } catch {
       this.logWarning('TEST_GUIDE.md not found');
       return '';
     }

@@ -3,9 +3,10 @@
  * 터미널 출력 및 파일 로깅
  */
 
-import chalk from 'chalk';
 import { appendFileSync, mkdirSync, existsSync } from 'fs';
-import { join, dirname } from 'path';
+import { join } from 'path';
+
+import chalk from 'chalk';
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
@@ -29,8 +30,10 @@ const LOG_LEVELS: Record<LogLevel, number> = {
 export class Logger {
   private config: LoggerConfig;
   private logFile: string | null = null;
+  private name: string;
 
-  constructor(private name: string, config?: Partial<LoggerConfig>) {
+  constructor(name: string, config?: Partial<LoggerConfig>) {
+    this.name = name;
     this.config = {
       level: config?.level || 'info',
       enableFile: config?.enableFile ?? true,
@@ -52,6 +55,7 @@ export class Logger {
     }
 
     const timestamp = new Date().toISOString().split('T')[0];
+    // name is used in initLogFile and format methods
     this.logFile = join(this.config.logDir, `${this.name}-${timestamp}.log`);
   }
 
@@ -65,7 +69,7 @@ export class Logger {
   /**
    * 로그 포맷팅
    */
-  private format(level: LogLevel, message: string, meta?: any): string {
+  private format(level: LogLevel, message: string, meta?: unknown): string {
     const timestamp = new Date().toISOString();
     const metaStr = meta ? ` ${JSON.stringify(meta)}` : '';
     return `[${timestamp}] [${level.toUpperCase()}] [${this.name}] ${message}${metaStr}`;
@@ -87,7 +91,7 @@ export class Logger {
   /**
    * DEBUG 로그
    */
-  debug(message: string, meta?: any): void {
+  debug(message: string, meta?: unknown): void {
     if (!this.shouldLog('debug')) return;
 
     const formatted = this.format('debug', message, meta);
@@ -101,7 +105,7 @@ export class Logger {
   /**
    * INFO 로그
    */
-  info(message: string, meta?: any): void {
+  info(message: string, meta?: unknown): void {
     if (!this.shouldLog('info')) return;
 
     const formatted = this.format('info', message, meta);
@@ -115,7 +119,7 @@ export class Logger {
   /**
    * WARN 로그
    */
-  warn(message: string, meta?: any): void {
+  warn(message: string, meta?: unknown): void {
     if (!this.shouldLog('warn')) return;
 
     const formatted = this.format('warn', message, meta);
@@ -129,7 +133,7 @@ export class Logger {
   /**
    * ERROR 로그
    */
-  error(message: string, error?: Error | any): void {
+  error(message: string, error?: Error | unknown): void {
     if (!this.shouldLog('error')) return;
 
     const meta = error instanceof Error ? { message: error.message, stack: error.stack } : error;
@@ -150,7 +154,7 @@ export class Logger {
   /**
    * 성공 메시지 (INFO 레벨)
    */
-  success(message: string, meta?: any): void {
+  success(message: string, meta?: unknown): void {
     if (!this.shouldLog('info')) return;
 
     const formatted = this.format('info', `SUCCESS: ${message}`, meta);
@@ -209,7 +213,7 @@ export class Logger {
   /**
    * 테이블 형식 로그
    */
-  table(data: Record<string, any>): void {
+  table(data: Record<string, unknown>): void {
     if (!this.config.enableConsole) return;
 
     console.table(data);
@@ -218,7 +222,7 @@ export class Logger {
   /**
    * JSON 로그
    */
-  json(data: any): void {
+  json(data: unknown): void {
     const formatted = this.format('info', 'JSON', data);
     this.writeToFile(formatted);
 

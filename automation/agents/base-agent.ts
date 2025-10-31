@@ -6,8 +6,8 @@
 import { AgentName, AgentContext, AgentResult, Stage } from '../types.js';
 import { getAIClient, AIClientConfig } from '../utils/ai-client.js';
 import { getFileManager } from '../utils/file-manager.js';
-import { getStatusTracker } from '../utils/status-tracker.js';
 import { createLogger, Logger } from '../utils/logger.js';
+import { getStatusTracker } from '../utils/status-tracker.js';
 
 export interface AgentConfig {
   name: AgentName;
@@ -35,6 +35,7 @@ export abstract class BaseAgent {
 
   /**
    * Agent 실행 (추상 메서드)
+   * @param context Agent 컨텍스트 (자식 클래스에서 구현 시 사용)
    */
   abstract execute(context: AgentContext): Promise<AgentResult>;
 
@@ -45,6 +46,7 @@ export abstract class BaseAgent {
 
   /**
    * 사용자 프롬프트 생성 (추상 메서드)
+   * @param context Agent 컨텍스트 (자식 클래스에서 구현 시 사용)
    */
   protected abstract getUserPrompt(context: AgentContext): string;
 
@@ -68,9 +70,10 @@ export abstract class BaseAgent {
 
       this.logger.success('AI response received');
       return response;
-    } catch (error: any) {
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
       this.logger.error('AI call failed', error);
-      throw new Error(`AI 호출 실패: ${error.message}`);
+      throw new Error(`AI 호출 실패: ${errorMessage}`);
     }
   }
 
@@ -84,7 +87,7 @@ export abstract class BaseAgent {
       try {
         result[key] = this.fileManager.read(path);
         this.logger.debug(`Input loaded: ${path}`);
-      } catch (error) {
+      } catch {
         this.logger.warn(`Failed to read input: ${path}`);
         result[key] = '';
       }
@@ -159,14 +162,15 @@ export abstract class BaseAgent {
       this.logger.success(`${this.config.name} 완료 (${duration}ms)`);
 
       return result;
-    } catch (error: any) {
+    } catch (error) {
       this.updateStatus('error');
-      this.logError(`${this.config.name} 실행 실패`, error);
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      this.logError(`${this.config.name} 실행 실패`, errorObj);
 
       return {
         success: false,
         outputs: {},
-        error: error.message,
+        error: errorObj.message,
       };
     }
   }

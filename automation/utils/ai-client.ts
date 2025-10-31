@@ -3,8 +3,9 @@
  * OpenAI 및 Anthropic API 통합
  */
 
-import OpenAI from 'openai';
 import Anthropic from '@anthropic-ai/sdk';
+import OpenAI from 'openai';
+
 import { AIProvider } from '../types.js';
 import { createLogger } from './logger.js';
 
@@ -107,9 +108,10 @@ export class AIClient {
       logger.debug('Token usage', result.usage);
 
       return result;
-    } catch (error: any) {
-      logger.error('OpenAI API call failed', error);
-      throw new Error(`OpenAI API 호출 실패: ${error.message}`);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error('OpenAI API call failed', errorObj);
+      throw new Error(`OpenAI API 호출 실패: ${errorObj.message}`);
     }
   }
 
@@ -160,9 +162,10 @@ export class AIClient {
       logger.debug('Token usage', result.usage);
 
       return result;
-    } catch (error: any) {
-      logger.error('Anthropic API call failed', error);
-      throw new Error(`Anthropic API 호출 실패: ${error.message}`);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      logger.error('Anthropic API call failed', errorObj);
+      throw new Error(`Anthropic API 호출 실패: ${errorObj.message}`);
     }
   }
 

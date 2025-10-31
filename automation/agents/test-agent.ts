@@ -23,12 +23,12 @@ export class TestAgent extends BaseAgent {
   async execute(context: AgentContext): Promise<AgentResult> {
     this.logger.info('테스트 코드 생성 시작 (RED 단계)');
 
-    // 1. 입력 파일 읽기
-    const spec = this.readSpec();
-    const testGuide = this.readTestGuide();
+    // 1. 입력 파일 읽기 (미사용)
+    this.readSpec();
+    this.readTestGuide();
 
     // 2. 사용자 프롬프트 생성
-    const userPrompt = this.getUserPrompt(context);
+    const userPrompt = this.getUserPrompt();
 
     // 3. AI 호출
     const testCode = await this.callAI(userPrompt);
@@ -137,8 +137,10 @@ describe('useEventForm', () => {
 
   /**
    * 사용자 프롬프트
+   * @param _context Agent 컨텍스트 (미사용)
    */
-  protected getUserPrompt(context: AgentContext): string {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  protected getUserPrompt(_context: AgentContext): string {
     const spec = this.readSpec();
     const testGuide = this.readTestGuide();
     const existingTests = this.analyzeExistingTests();
@@ -224,7 +226,7 @@ ${testGuide.substring(0, 1000)}
   private readSpec(): string {
     try {
       return this.fileManager.read('docs/spec.md');
-    } catch (error) {
+    } catch {
       this.logError('spec.md not found');
       throw new Error('명세 파일이 없습니다. SpecAgent를 먼저 실행하세요.');
     }
@@ -236,7 +238,7 @@ ${testGuide.substring(0, 1000)}
   private readTestGuide(): string {
     try {
       return this.fileManager.read('docs/TEST_GUIDE.md');
-    } catch (error) {
+    } catch {
       this.logWarning('TEST_GUIDE.md not found');
       return '';
     }
@@ -527,7 +529,7 @@ ${featureContent}
       const statusContent = this.fileManager.read('state/workflow-status.json');
       const status = JSON.parse(statusContent);
       return status.feature?.current_feature_number || 1;
-    } catch (error) {
+    } catch {
       this.logWarning('workflow-status.json을 읽을 수 없습니다. 기본값 1 사용');
       return 1;
     }
@@ -569,7 +571,7 @@ ${featureContent}
         for (const match of itMatches) {
           testCases.add(match[1]);
         }
-      } catch (error) {
+      } catch {
         // 읽기 실패는 무시
       }
     }

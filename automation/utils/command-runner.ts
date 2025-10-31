@@ -3,8 +3,10 @@
  * 터미널 명령어 실행 및 결과 수집
  */
 
-import { exec, execSync, spawn } from 'child_process';
+import { exec, execSync } from 'child_process';
+import { Buffer } from 'node:buffer';
 import { promisify } from 'util';
+
 import { createLogger } from './logger.js';
 
 const logger = createLogger('command-runner');
@@ -75,18 +77,20 @@ export class CommandRunner {
         exitCode: 0,
         duration,
       };
-    } catch (error: any) {
+    } catch (error) {
       const duration = Date.now() - startTime;
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      const execError = error as { stdout?: string; stderr?: string; code?: number };
 
       if (!silent) {
-        logger.error(`Command failed (${duration}ms)`, error);
+        logger.error(`Command failed (${duration}ms)`, errorObj);
       }
 
       return {
         success: false,
-        stdout: error.stdout?.trim() || '',
-        stderr: error.stderr?.trim() || error.message,
-        exitCode: error.code || 1,
+        stdout: execError.stdout?.trim() || '',
+        stderr: execError.stderr?.trim() || errorObj.message,
+        exitCode: execError.code || 1,
         duration,
       };
     }
@@ -126,8 +130,14 @@ export class CommandRunner {
         exitCode: 0,
         duration,
       };
-    } catch (error: any) {
+    } catch (error) {
       const duration = Date.now() - startTime;
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      const execError = error as {
+        stdout?: string | Buffer;
+        stderr?: string | Buffer;
+        status?: number;
+      };
 
       if (!silent) {
         logger.error(`Command failed (${duration}ms)`);
@@ -135,9 +145,9 @@ export class CommandRunner {
 
       return {
         success: false,
-        stdout: error.stdout?.toString().trim() || '',
-        stderr: error.stderr?.toString().trim() || error.message,
-        exitCode: error.status || 1,
+        stdout: execError.stdout?.toString().trim() || '',
+        stderr: execError.stderr?.toString().trim() || errorObj.message,
+        exitCode: execError.status || 1,
         duration,
       };
     }
@@ -257,7 +267,10 @@ export class CommandRunner {
   /**
    * 명령어 실행 결과 파싱 (JSON)
    */
-  async runAndParseJson<T = any>(command: string, options: CommandOptions = {}): Promise<T | null> {
+  async runAndParseJson<T = unknown>(
+    command: string,
+    options: CommandOptions = {}
+  ): Promise<T | null> {
     const result = await this.run(command, { ...options, captureOutput: true });
 
     if (!result.success) {

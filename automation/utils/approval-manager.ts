@@ -4,7 +4,9 @@
  */
 
 import readline from 'readline';
+
 import chalk from 'chalk';
+
 import { Stage } from '../types.js';
 
 export interface ApprovalRequest {
@@ -247,7 +249,15 @@ export class ApprovalManager {
     warnings: string[];
     affectedFiles: string[];
   } {
-    const info: Record<Stage, any> = {
+    const info: Record<
+      Stage,
+      {
+        description: string[];
+        expectedResults: string[];
+        warnings: string[];
+        affectedFiles: string[];
+      }
+    > = {
       SPEC: {
         description: [
           'SpecAgent가 요구사항을 분석하고 기능 명세를 작성합니다',

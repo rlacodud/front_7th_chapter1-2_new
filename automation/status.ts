@@ -6,8 +6,9 @@
  */
 
 import chalk from 'chalk';
-import { getStatusTracker } from './utils/status-tracker.js';
+
 import { getOrchestrator } from './core/orchestrator.js';
+import { getStatusTracker } from './utils/status-tracker.js';
 
 /**
  * 상태 출력
@@ -122,11 +123,12 @@ function printStatus() {
     console.log(chalk.gray(`  ${statusTracker.getFilePath()}\n`));
 
     console.log(chalk.gray('━'.repeat(60)) + '\n');
-  } catch (error: any) {
+  } catch (error) {
+    const errorObj = error instanceof Error ? error : new Error(String(error));
     console.log(chalk.red.bold('\n❌ 상태 조회 실패\n'));
-    console.log(chalk.red(error.message));
+    console.log(chalk.red(errorObj.message));
 
-    if (error.message.includes('not found')) {
+    if (errorObj.message.includes('not found')) {
       console.log(chalk.yellow('\n💡 워크플로우를 먼저 실행하세요:'));
       console.log(chalk.white('   pnpm agent:run\n'));
     }

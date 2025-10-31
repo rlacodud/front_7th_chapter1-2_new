@@ -3,9 +3,9 @@
  * TDD 단계 관리 및 전환
  */
 
-import { Stage, AgentName, WorkflowStatus } from '../types.js';
-import { getStatusTracker } from '../utils/status-tracker.js';
+import { Stage, AgentName } from '../types.js';
 import { createLogger } from '../utils/logger.js';
+import { getStatusTracker } from '../utils/status-tracker.js';
 
 const logger = createLogger('workflow-manager');
 

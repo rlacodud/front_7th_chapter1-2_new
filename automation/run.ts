@@ -7,6 +7,7 @@
 
 import 'dotenv/config';
 import chalk from 'chalk';
+
 import { getOrchestrator } from './core/orchestrator.js';
 import { createLogger } from './utils/logger.js';
 
@@ -133,10 +134,11 @@ async function main() {
 
       process.exit(1);
     }
-  } catch (error: any) {
+  } catch (error) {
+    const errorObj = error instanceof Error ? error : new Error(String(error));
     console.log(chalk.red.bold('\n❌ 오류 발생\n'));
-    console.log(chalk.red(error.message));
-    console.log(chalk.gray(error.stack));
+    console.log(chalk.red(errorObj.message));
+    console.log(chalk.gray(errorObj.stack));
     process.exit(1);
   }
 }

@@ -4,13 +4,12 @@
  */
 
 import { execSync } from 'child_process';
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync } from 'fs';
+
 import chalk from 'chalk';
+
 import { Stage } from '../types.js';
-import {
-  getApprovalManager,
-  ApprovalResult,
-} from '../utils/approval-manager.js';
+import { getApprovalManager } from '../utils/approval-manager.js';
 
 export interface CommitInfo {
   stage: Stage;
@@ -63,7 +62,7 @@ export class GitExecutor {
       return execSync('git branch --show-current', {
         encoding: 'utf-8',
       }).trim();
-    } catch (error) {
+    } catch {
       return 'main';
     }
   }
@@ -85,15 +84,14 @@ export class GitExecutor {
         try {
           execSync(`git add "${file}"`, { encoding: 'utf-8' });
           console.log(chalk.gray(`  ✓ ${file}`));
-        } catch (error) {
+        } catch {
           console.log(chalk.red(`  ✗ ${file} (실패)`));
         }
       }
 
       console.log(chalk.green('\n✅ 파일 스테이징 완료\n'));
       return true;
-    } catch (error) {
-      console.error(chalk.red('파일 스테이징 실패:'), error);
+    } catch {
       return false;
     }
   }
@@ -124,8 +122,9 @@ export class GitExecutor {
       console.log(chalk.gray(`   Commit SHA: ${commitSha.substring(0, 7)}\n`));
 
       return commitSha;
-    } catch (error: any) {
-      console.error(chalk.red('커밋 실패:'), error.message);
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      console.error(chalk.red('커밋 실패:'), errorObj.message);
       return null;
     }
   }
@@ -133,10 +132,7 @@ export class GitExecutor {
   /**
    * 푸시 실행
    */
-  private executePush(
-    remote: string = 'origin',
-    branch: string = 'main'
-  ): boolean {
+  private executePush(remote: string = 'origin', branch: string = 'main'): boolean {
     try {
       console.log(chalk.blue(`\n📤 ${remote}/${branch}로 푸시 중...\n`));
 
@@ -147,13 +143,10 @@ export class GitExecutor {
 
       console.log(chalk.green(`\n✅ 푸시 완료 (${remote}/${branch})\n`));
       return true;
-    } catch (error: any) {
-      console.error(chalk.red('푸시 실패:'), error.message);
-      console.log(
-        chalk.yellow(
-          `\n💡 수동으로 푸시하려면: git push ${remote} ${branch}\n`
-        )
-      );
+    } catch (error) {
+      const errorObj = error instanceof Error ? error : new Error(String(error));
+      console.error(chalk.red('푸시 실패:'), errorObj.message);
+      console.log(chalk.yellow(`\n💡 수동으로 푸시하려면: git push ${remote} ${branch}\n`));
       return false;
     }
   }
@@ -171,16 +164,10 @@ export class GitExecutor {
     };
 
     // 1. 변경된 파일 확인
-    const files = commitInfo.files.length > 0 
-      ? commitInfo.files 
-      : this.getChangedFiles();
+    const files = commitInfo.files.length > 0 ? commitInfo.files : this.getChangedFiles();
 
     if (files.length === 0) {
-      console.log(
-        chalk.yellow(
-          '\n⚠️  변경된 파일이 없습니다. 커밋을 건너뜁니다.\n'
-        )
-      );
+      console.log(chalk.yellow('\n⚠️  변경된 파일이 없습니다. 커밋을 건너뜁니다.\n'));
       return result;
     }
 
@@ -194,9 +181,7 @@ export class GitExecutor {
     if (!commitApproval.approved) {
       console.log(
         chalk.gray(
-          '\n💡 나중에 수동으로 커밋하려면:\n' +
-            `   git add <files>\n` +
-            `   git commit -m "..."\n`
+          '\n💡 나중에 수동으로 커밋하려면:\n' + `   git add <files>\n` + `   git commit -m "..."\n`
         )
       );
       return result;
@@ -221,19 +206,12 @@ export class GitExecutor {
 
     // 5. 푸시 승인 요청 (옵션)
     if (!enablePush) {
-      console.log(
-        chalk.gray(
-          '\n💡 수동으로 푸시하려면: git push origin main\n'
-        )
-      );
+      console.log(chalk.gray('\n💡 수동으로 푸시하려면: git push origin main\n'));
       return result;
     }
 
     const branch = this.getCurrentBranch();
-    const pushApproval = await this.approvalManager.requestPushApproval(
-      branch,
-      'origin'
-    );
+    const pushApproval = await this.approvalManager.requestPushApproval(branch, 'origin');
 
     if (!pushApproval.approved) {
       return result;
@@ -259,9 +237,7 @@ export class GitExecutor {
     for (const commitInfo of commits) {
       console.log(
         chalk.cyan(
-          `\n${'='.repeat(60)}\n` +
-            `  ${commitInfo.stage} 단계 커밋\n` +
-            `${'='.repeat(60)}\n`
+          `\n${'='.repeat(60)}\n` + `  ${commitInfo.stage} 단계 커밋\n` + `${'='.repeat(60)}\n`
         )
       );
 
@@ -274,11 +250,7 @@ export class GitExecutor {
 
       // 커밋 실패 시 중단
       if (!result.committed) {
-        console.log(
-          chalk.red(
-            `\n❌ ${commitInfo.stage} 단계 커밋 실패. 프로세스를 중단합니다.\n`
-          )
-        );
+        console.log(chalk.red(`\n❌ ${commitInfo.stage} 단계 커밋 실패. 프로세스를 중단합니다.\n`));
         break;
       }
     }
@@ -341,4 +313,3 @@ export function getGitExecutor(): GitExecutor {
   }
   return gitExecutorInstance;
 }
-

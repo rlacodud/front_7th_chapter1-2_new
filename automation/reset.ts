@@ -5,13 +5,14 @@
  * 실행: pnpm agent:reset
  */
 
-import chalk from 'chalk';
-import { getStatusTracker } from './utils/status-tracker.js';
-import { getOrchestrator } from './core/orchestrator.js';
-import { getFileManager } from './utils/file-manager.js';
 import { existsSync, unlinkSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 import readline from 'readline';
+
+import chalk from 'chalk';
+
+import { getOrchestrator } from './core/orchestrator.js';
+import { getStatusTracker } from './utils/status-tracker.js';
 
 /**
  * 사용자 확인
@@ -65,7 +66,7 @@ function deleteFile(path: string): boolean {
       return true;
     }
     return false;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
@@ -149,9 +150,10 @@ async function reset() {
     console.log(chalk.blue('💡 다음 단계:\n'));
     console.log(chalk.white('  - 새로운 워크플로우 시작: pnpm agent:run'));
     console.log(chalk.white('  - 상태 확인: pnpm agent:status\n'));
-  } catch (error: any) {
+  } catch (error) {
+    const errorObj = error instanceof Error ? error : new Error(String(error));
     console.log(chalk.red.bold('\n❌ 초기화 실패\n'));
-    console.log(chalk.red(error.message));
+    console.log(chalk.red(errorObj.message));
     process.exit(1);
   }
 }

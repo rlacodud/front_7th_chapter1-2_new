@@ -29,6 +29,7 @@ export const useNotifications = (events: Event[]) => {
   useEffect(() => {
     const interval = setInterval(checkUpcomingEvents, 1000); // 1초마다 체크
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events, notifiedEvents]);
 
   return { notifications, notifiedEvents, setNotifications, removeNotification };

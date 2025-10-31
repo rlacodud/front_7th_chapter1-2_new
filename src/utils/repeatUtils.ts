@@ -198,24 +198,18 @@ export function generateRecurringEvents(baseEvent: EventForm): EventForm[] {
   if (type === 'yearly') {
     const baseMonth = start.getMonth();
     const baseDay = start.getDate();
-    let cursor = new Date(start);
+    let yearsAhead = 0;
 
     while (true) {
-      // 매년 interval 만큼 증가
-      cursor.setFullYear(cursor.getFullYear() + interval);
-
-      // 종료일 초과 시 중단
-      if (end && cursor > end) break;
-
-      // 2월 29일인데 평년이면 건너뜀
-      if (baseMonth === 1 && baseDay === 29 && !isLeapYear(cursor.getFullYear())) {
+      yearsAhead += interval;
+      const next = addYearsExactFromBase(start, yearsAhead, baseMonth, baseDay);
+      if (!next) {
+        // 해당 연도에 같은 날짜가 없으면 건너뛰되 종료일은 확인
+        const bound = new Date(start);
+        bound.setFullYear(start.getFullYear() + yearsAhead);
+        if (end && bound > end) break;
         continue;
       }
-
-      // 존재하지 않는 날짜(예: 4월 31일)면 건너뜀
-      const next = new Date(cursor.getFullYear(), baseMonth, baseDay);
-      if (next.getMonth() !== baseMonth) continue;
-
       if (!pushIfInRange(next)) break;
     }
 

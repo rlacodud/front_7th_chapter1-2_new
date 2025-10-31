@@ -1,6 +1,6 @@
 /**
  * 대화형 커밋/푸시 예시
- * 
+ *
  * 실행: tsx automation/examples/commit-example.ts
  */
 
@@ -128,10 +128,9 @@ async function main() {
       console.log('');
     });
 
-    // 로그 파일 생성
-    const log = gitExecutor.generateCommitLog(results);
+    // 로그 파일 생성 (미사용)
+    gitExecutor.generateCommitLog(results);
     console.log('📝 로그가 생성되었습니다.\n');
-
   } catch (error) {
     console.error('❌ 오류 발생:', error);
   } finally {
@@ -141,4 +140,3 @@ async function main() {
 }
 
 main();
-

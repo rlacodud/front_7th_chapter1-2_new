@@ -7,6 +7,13 @@ import { BaseAgent, AgentConfig } from './base-agent.js';
 import { AgentContext, AgentResult } from '../types.js';
 import { getCommandRunner } from '../utils/command-runner.js';
 
+interface CoverageMetrics {
+  statements: number;
+  branches: number;
+  functions: number;
+  lines: number;
+}
+
 /**
  * RefactorReviewAgent 구현
  */
@@ -26,8 +33,8 @@ export class RefactorReviewAgent extends BaseAgent {
     // 1. 커버리지 측정
     const coverage = await this.measureCoverage();
 
-    // 2. 코드 읽기
-    const codeFiles = this.readImplementationFiles();
+    // 2. 코드 읽기 (미사용)
+    this.readImplementationFiles();
 
     // 3. 사용자 프롬프트 생성
     const userPrompt = this.getUserPrompt(context, coverage);
@@ -157,7 +164,7 @@ export class RefactorReviewAgent extends BaseAgent {
   /**
    * 사용자 프롬프트
    */
-  protected getUserPrompt(context: AgentContext, coverage: any): string {
+  protected getUserPrompt(context: AgentContext, coverage: CoverageMetrics): string {
     const codeFiles = this.readImplementationFiles();
     const fileList = Object.keys(codeFiles).join('\n');
 
@@ -208,7 +215,7 @@ ${fileList}
       for (const file of matchedFiles) {
         try {
           files[file] = this.fileManager.read(file);
-        } catch (error) {
+        } catch {
           this.logWarning(`Failed to read: ${file}`);
         }
       }
@@ -248,7 +255,7 @@ ${fileList}
         functions: total.functions.pct,
         lines: total.lines.pct,
       };
-    } catch (error) {
+    } catch {
       this.logWarning('커버리지 파일 파싱 실패');
       return {
         statements: 0,
@@ -262,7 +269,7 @@ ${fileList}
   /**
    * execution-log.md 생성
    */
-  private generateExecutionLog(reviewReport: string, coverage: any): string {
+  private generateExecutionLog(reviewReport: string, coverage: CoverageMetrics): string {
     const now = new Date().toISOString();
 
     return `# TDD 실행 로그
@@ -306,7 +313,7 @@ ${reviewReport}
   /**
    * 품질 메트릭 업데이트
    */
-  private updateQualityMetrics(coverage: any): void {
+  private updateQualityMetrics(coverage: CoverageMetrics): void {
     this.statusTracker.updateQualityMetrics({
       coverage: {
         statements: coverage.statements,

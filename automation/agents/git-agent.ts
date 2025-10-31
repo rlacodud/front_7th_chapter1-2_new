@@ -5,8 +5,8 @@
  */
 
 import { BaseAgent, AgentConfig } from './base-agent.js';
-import { AgentContext, AgentResult } from '../types.js';
 import { getGitExecutor, CommitInfo } from '../core/git-executor.js';
+import { AgentContext, AgentResult } from '../types.js';
 
 /**
  * GitAgent 구현
@@ -27,8 +27,8 @@ export class GitAgent extends BaseAgent {
     // 1. execution-log.md 읽기
     const executionLog = this.readExecutionLog();
 
-    // 2. 테스트 결과 읽기
-    const testResults = this.readTestResults();
+    // 2. 테스트 결과 읽기 (미사용)
+    this.readTestResults();
 
     // 3. 변경된 파일 목록 가져오기
     const changedFiles = this.gitExecutor.getChangedFiles();
@@ -231,7 +231,7 @@ ${changedFiles.join('\n')}
   private readExecutionLog(): string {
     try {
       return this.fileManager.read('docs/test-guides/execution-log.md');
-    } catch (error) {
+    } catch {
       this.logWarning('execution-log.md not found');
       return '';
     }
@@ -240,10 +240,10 @@ ${changedFiles.join('\n')}
   /**
    * 테스트 결과 읽기
    */
-  private readTestResults(): any {
+  private readTestResults(): Record<string, unknown> {
     try {
-      return this.fileManager.readJson('reports/test-results.json');
-    } catch (error) {
+      return this.fileManager.readJson('reports/test-results.json') as Record<string, unknown>;
+    } catch {
       this.logWarning('test-results.json not found');
       return {};
     }
@@ -252,7 +252,7 @@ ${changedFiles.join('\n')}
   /**
    * 커밋 메시지 파싱
    */
-  private parseCommitMessages(aiResponse: string): any {
+  private parseCommitMessages(aiResponse: string): { commits: CommitInfo[] } {
     try {
       // JSON 블록 추출
       const jsonMatch = aiResponse.match(/```json\s*([\s\S]+?)\s*```/);
@@ -294,9 +294,9 @@ ${changedFiles.join('\n')}
   /**
    * 대화형 커밋/푸시 실행
    */
-  private async executeCommits(commits: any[]): Promise<void> {
+  private async executeCommits(commits: CommitInfo[]): Promise<void> {
     const commitInfos: CommitInfo[] = commits.map((commit) => ({
-      stage: commit.stage as any,
+      stage: commit.stage,
       message: commit.message,
       files: commit.files || [],
     }));

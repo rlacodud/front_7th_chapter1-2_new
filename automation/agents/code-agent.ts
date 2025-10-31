@@ -24,7 +24,7 @@ export class CodeAgent extends BaseAgent {
     this.logger.info('구현 코드 작성 시작 (GREEN 단계)');
 
     // 1. 테스트 파일 읽기
-    const testFiles = this.readTestFiles();
+    this.readTestFiles();
 
     // 2. 테스트 실행 (현재 실패 확인)
     const failingTests = await this.runTests();
@@ -396,7 +396,7 @@ ${testFilesList}
     for (const file of testFiles) {
       try {
         testFilesContent[file] = this.fileManager.read(file);
-      } catch (error) {
+      } catch {
         this.logWarning(`Failed to read test file: ${file}`);
       }
     }
@@ -411,7 +411,7 @@ ${testFilesList}
     try {
       const content = this.fileManager.read('src/types.ts');
       return content.substring(0, 1000); // 처음 1000자만 (토큰 절약)
-    } catch (error) {
+    } catch {
       this.logWarning('Failed to read src/types.ts');
       return '// Type 정보를 읽을 수 없습니다.';
     }
@@ -472,7 +472,7 @@ ${featureContent}
 
 ⚠️ 위 기능에 대한 코드만 구현합니다!
 `;
-    } catch (error) {
+    } catch {
       this.logWarning('spec.md를 읽을 수 없습니다. 테스트만 기준으로 구현합니다.');
       return '(spec.md 없음 - 테스트 코드 기준으로 구현)';
     }
@@ -486,7 +486,7 @@ ${featureContent}
       const statusContent = this.fileManager.read('state/workflow-status.json');
       const status = JSON.parse(statusContent);
       return status.feature?.current_feature_number || 1;
-    } catch (error) {
+    } catch {
       this.logWarning('workflow-status.json을 읽을 수 없습니다. 기본값 1 사용');
       return 1;
     }
@@ -538,7 +538,7 @@ ${featureContent}
       plan.push('⚠️ **중요**: 위 파일들을 모두 출력에 포함하세요!');
 
       return plan.join('\n');
-    } catch (error) {
+    } catch {
       this.logWarning('spec.md를 읽을 수 없습니다. 테스트만 기준으로 구현합니다.');
       return '(spec.md 없음 - 테스트 코드 기준으로 구현)';
     }
