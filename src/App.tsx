@@ -263,15 +263,12 @@ function App() {
     setEditingRecurringEvent(null);
     setEditingRecurringEventDate(null);
     resetForm();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resetForm]);
 
   // 반복 일정 전체 수정 API 호출 공통 함수
   const updateRecurringEventSeries = useCallback(
-    async (
-      eventId: string,
-      updateData: EventForm,
-      repeatId?: string
-    ): Promise<boolean> => {
+    async (eventId: string, updateData: EventForm, repeatId?: string): Promise<boolean> => {
       try {
         const response = repeatId
           ? await fetch(`/api/recurring-events/${repeatId}`, {
@@ -531,11 +528,7 @@ function App() {
           };
 
           // 전체 수정: repeatId 유무에 따라 API 호출 분기
-          const success = await updateRecurringEventSeries(
-            originalEvent.id,
-            updateData,
-            repeatId
-          );
+          const success = await updateRecurringEventSeries(originalEvent.id, updateData, repeatId);
           if (success) return;
         }
       }
