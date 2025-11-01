@@ -216,7 +216,7 @@ describe('반복 일정 표시', () => {
 
     setup(<App />);
 
-    expect(await screen.findByTestId('repeat-icon')).toBeInTheDocument();
+    expect((await screen.findAllByTestId('repeat-icon')).length).toBeGreaterThan(0);
   });
 
   it('단일 일정은 캘린더 뷰에서 반복 아이콘이 표시되지 않는다', async () => {
@@ -570,5 +570,199 @@ describe('반복 일정 삭제', () => {
     const eventsAfter = monthView.queryAllByText('매주 회의');
     // 전체 삭제이므로 모든 일정이 삭제되어야 함
     expect(eventsAfter.length).toBe(0);
+  });
+});
+
+describe('반복 일정 통합 테스트', () => {
+  it('반복 일정은 캘린더 뷰에서 반복 아이콘으로 구분되어 표시된다', async () => {
+    server.use(
+      http.get('/api/events', () =>
+        HttpResponse.json({
+          events: [
+            {
+              id: 'r1',
+              title: '회의',
+              date: '2025-10-01',
+              startTime: '09:00',
+              endTime: '10:00',
+              description: '반복 테스트',
+              location: '회의실',
+              category: '업무',
+              repeat: { type: 'weekly', interval: 1, endDate: '2025-10-31' },
+              notificationTime: 10,
+            },
+          ],
+        })
+      )
+    );
+
+    setup(<App />);
+
+    // 다중 repeat-icon 대응
+    const repeatIcons = await screen.findAllByTestId('repeat-icon');
+    expect(repeatIcons.length).toBeGreaterThan(0);
+  });
+
+  it('예를 선택하면 단일 수정되어 해당 일정만 단일 일정으로 변경되고 반복 아이콘이 사라진다', async () => {
+    vi.setSystemTime(new Date('2025-10-15'));
+
+    const mockEvents: Event[] = [
+      {
+        id: 'r2',
+        title: '반복 회의',
+        date: '2025-10-01',
+        startTime: '09:00',
+        endTime: '10:00',
+        description: '반복',
+        location: '회의실',
+        category: '업무',
+        repeat: { type: 'weekly', interval: 1, endDate: '2025-10-31' },
+        notificationTime: 10,
+      },
+    ];
+
+    server.use(
+      http.get('/api/events', () => {
+        // 항상 최신 mockEvents 배열을 반환
+        return HttpResponse.json({ events: [...mockEvents] });
+      }),
+      http.post('/api/events', async ({ request }) => {
+        const newEvent = (await request.json()) as Event;
+        // ID 생성 시 현재 길이 기준으로 (추가 전 길이 + 1)
+        newEvent.id = String(mockEvents.length + 1);
+        mockEvents.push(newEvent);
+        return HttpResponse.json(newEvent, { status: 201 });
+      })
+    );
+
+    const user = userEvent.setup();
+    setup(<App />);
+
+    // 일정 로딩 완료 대기
+    await screen.findByText('일정 로딩 완료!');
+
+    // 편집 아이콘 중 첫 번째 클릭
+    const editButtons = await screen.findAllByLabelText('Edit event');
+    await user.click(editButtons[0]);
+
+    // 모달 텍스트 확인
+    await screen.findByText('반복 일정을 수정하시겠습니까?');
+
+    // 예 버튼 클릭
+    const yesButton =
+      screen.queryByRole('button', { name: /예/i }) ||
+      (await screen.findByText((_, el) => el.textContent?.includes('예')));
+
+    await user.click(yesButton!);
+
+    // 제목 수정
+    await user.clear(screen.getByLabelText('제목'));
+    await user.type(screen.getByLabelText('제목'), '수정된 회의');
+
+    await user.click(screen.getByTestId('event-submit-button'));
+
+    // 저장 후 이벤트 리스트에 "수정된 회의"가 나타나는지 확인
+    const eventList = screen.getByTestId('event-list');
+    await expect(eventList).toBeInTheDocument();
+    const modifiedEventTitle = await within(eventList).findByText('수정된 회의');
+    expect(modifiedEventTitle).toBeInTheDocument();
+
+    // 수정된 타이틀이 있는 곳 근처에 반복 아이콘이 없는지 확인
+    const parentStack =
+      modifiedEventTitle.closest('.MuiStack-root') || modifiedEventTitle.parentElement;
+    expect(parentStack).not.toBeNull();
+
+    if (parentStack) {
+      // 해당 Stack 내에서 반복 아이콘이 없는지 확인
+      const repeatIcon = within(parentStack as HTMLElement).queryByTestId('repeat-icon');
+      expect(repeatIcon).not.toBeInTheDocument();
+    }
+  });
+
+  it('아니오를 선택하면 전체 수정되어 반복 일정이 유지되고 반복 아이콘이 남아있다', async () => {
+    vi.setSystemTime(new Date('2025-10-15'));
+
+    const mockEvents: Event[] = [
+      {
+        id: 'r3',
+        title: '반복 회의',
+        date: '2025-10-01',
+        startTime: '09:00',
+        endTime: '10:00',
+        description: '반복',
+        location: '회의실',
+        category: '업무',
+        repeat: { type: 'weekly', interval: 1, endDate: '2025-10-31' },
+        notificationTime: 10,
+      },
+    ];
+
+    server.use(
+      http.get('/api/events', () => {
+        return HttpResponse.json({ events: [...mockEvents] });
+      }),
+      http.put('/api/events/:id', async ({ params, request }) => {
+        const { id } = params;
+        const updatedEvent = (await request.json()) as Event;
+        const index = mockEvents.findIndex((event) => event.id === id);
+        if (index !== -1) {
+          mockEvents[index] = { ...mockEvents[index], ...updatedEvent };
+          return HttpResponse.json(mockEvents[index]);
+        }
+        return HttpResponse.json({}, { status: 404 });
+      })
+    );
+
+    const user = userEvent.setup();
+    setup(<App />);
+
+    // 일정 로딩 완료 대기
+    await screen.findByText('일정 로딩 완료!');
+
+    // 편집 아이콘 중 첫 번째 클릭
+    const editButtons = await screen.findAllByLabelText('Edit event');
+    await user.click(editButtons[0]);
+
+    // 모달 텍스트 확인
+    await screen.findByText('반복 일정을 수정하시겠습니까?');
+
+    // 아니오 버튼 클릭 (전체 수정)
+    const noButton =
+      screen.queryByRole('button', { name: /아니오/i }) ||
+      (await screen.findByText((_, el) => el.textContent?.includes('아니오')));
+
+    await user.click(noButton!);
+
+    // 제목 수정
+    await user.clear(screen.getByLabelText('제목'));
+    await user.type(screen.getByLabelText('제목'), '전체 수정된 회의');
+
+    await user.click(screen.getByTestId('event-submit-button'));
+
+    // 저장 후 이벤트 리스트에 "전체 수정된 회의"가 여러 개 나타나는지 확인
+    const eventList = screen.getByTestId('event-list');
+    await expect(eventList).toBeInTheDocument();
+    const modifiedEventTitles = await within(eventList).findAllByText((content, element) => {
+      return element?.tagName.toLowerCase() === 'p' && content === '전체 수정된 회의';
+    });
+
+    // 전체 수정이므로 여러 개의 반복 인스턴스가 모두 수정되었는지 확인
+    expect(modifiedEventTitles.length).toBeGreaterThan(0);
+
+    // 모든 수정된 이벤트에 반복 아이콘이 있는지 확인
+    modifiedEventTitles.forEach((titleElement) => {
+      const parentStack = titleElement.closest('.MuiStack-root') || titleElement.parentElement;
+      expect(parentStack).not.toBeNull();
+
+      if (parentStack) {
+        // 해당 Stack 내에서 반복 아이콘이 있는지 확인
+        const repeatIcon = within(parentStack as HTMLElement).getByTestId('repeat-icon');
+        expect(repeatIcon).toBeInTheDocument();
+      }
+    });
+
+    // 전체 수정된 이벤트 개수와 반복 아이콘 개수가 같은지 확인
+    const repeatIcons = await within(eventList).findAllByTestId('repeat-icon');
+    expect(repeatIcons.length).toBe(modifiedEventTitles.length);
   });
 });
