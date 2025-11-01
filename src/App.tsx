@@ -256,6 +256,53 @@ function App() {
     });
   }, []);
 
+  // 반복 일정 수정 후 상태 초기화 공통 함수
+  const resetEditingState = useCallback(() => {
+    setIsSingleEdit(false);
+    setEditingEvent(null);
+    setEditingRecurringEvent(null);
+    setEditingRecurringEventDate(null);
+    resetForm();
+  }, [resetForm]);
+
+  // 반복 일정 전체 수정 API 호출 공통 함수
+  const updateRecurringEventSeries = useCallback(
+    async (
+      eventId: string,
+      updateData: EventForm,
+      repeatId?: string
+    ): Promise<boolean> => {
+      try {
+        const response = repeatId
+          ? await fetch(`/api/recurring-events/${repeatId}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(updateData),
+            })
+          : await fetch(`/api/events/${eventId}`, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(updateData),
+            });
+
+        if (!response.ok) {
+          throw new Error('Failed to update recurring events');
+        }
+
+        clearEditedRecurringDates(eventId);
+        await fetchEvents();
+        resetForm();
+        enqueueSnackbar('일정이 저장되었습니다.', { variant: 'success' });
+        return true;
+      } catch (error) {
+        console.error('Error updating recurring events:', error);
+        enqueueSnackbar('일정 저장 실패', { variant: 'error' });
+        return false;
+      }
+    },
+    [clearEditedRecurringDates, fetchEvents, resetForm, enqueueSnackbar]
+  );
+
   // 반복 일정 삭제 핸들러
   const handleRecurringDeleteClick = useCallback(
     (event: Event) => {
@@ -419,12 +466,8 @@ function App() {
             throw new Error('Failed to save event');
           }
 
-          setIsSingleEdit(false);
           await fetchEvents();
-          setEditingEvent(null);
-          setEditingRecurringEvent(null);
-          setEditingRecurringEventDate(null);
-          resetForm();
+          resetEditingState();
           enqueueSnackbar('일정이 추가되었습니다.', { variant: 'success' });
         } catch (error) {
           console.error('Failed to save single edit:', error);
@@ -487,58 +530,13 @@ function App() {
             notificationTime,
           };
 
-          // repeatId가 있는 경우: API로 전체 수정
-          if (repeatId) {
-            try {
-              const response = await fetch(`/api/recurring-events/${repeatId}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updateData),
-              });
-
-              if (!response.ok) {
-                throw new Error('Failed to update recurring events');
-              }
-
-              // 전체 수정이므로 단일 수정 추적 정보 제거
-              clearEditedRecurringDates(originalEvent.id);
-
-              await fetchEvents();
-              resetForm();
-              enqueueSnackbar('일정이 저장되었습니다.', { variant: 'success' });
-              return;
-            } catch (error) {
-              console.error('Error updating recurring events:', error);
-              enqueueSnackbar('일정 저장 실패', { variant: 'error' });
-              return;
-            }
-          } else {
-            // repeatId가 없는 경우: 원본 이벤트만 PUT 요청
-            // App에서 전개되므로 원본만 업데이트하면 자동으로 반영됨
-            try {
-              const response = await fetch(`/api/events/${originalEvent.id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updateData),
-              });
-
-              if (!response.ok) {
-                throw new Error('Failed to update recurring events');
-              }
-
-              // 전체 수정이므로 단일 수정 추적 정보 제거
-              clearEditedRecurringDates(originalEvent.id);
-
-              await fetchEvents();
-              resetForm();
-              enqueueSnackbar('일정이 저장되었습니다.', { variant: 'success' });
-              return;
-            } catch (error) {
-              console.error('Error updating recurring events:', error);
-              enqueueSnackbar('일정 저장 실패', { variant: 'error' });
-              return;
-            }
-          }
+          // 전체 수정: repeatId 유무에 따라 API 호출 분기
+          const success = await updateRecurringEventSeries(
+            originalEvent.id,
+            updateData,
+            repeatId
+          );
+          if (success) return;
         }
       }
     }
