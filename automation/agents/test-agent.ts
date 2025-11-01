@@ -20,7 +20,7 @@ export class TestAgent extends BaseAgent {
   /**
    * TestAgent 실행
    */
-  async execute(context: AgentContext): Promise<AgentResult> {
+  async execute(): Promise<AgentResult> {
     this.logger.info('테스트 코드 생성 시작 (RED 단계)');
 
     // 1. 입력 파일 읽기 (미사용)
